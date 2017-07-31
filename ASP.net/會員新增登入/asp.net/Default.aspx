@@ -12,9 +12,9 @@
     <a href ="registrtion.aspx">Registration</a> | <a href ="#">Home</a>
     <form id="form1" runat="server">
         <p>Enter User Name</p>
-        <asp:TextBox ID ="tbusername" Text="Enter Ur username" runat="server"></asp:TextBox>
+        <asp:TextBox ID ="tbusername" runat="server"></asp:TextBox>
         <p>Enter User Password</p>
-        <asp:TextBox ID ="tbpassword" Text="Enter password" runat="server" />
+        <asp:TextBox ID ="tbpassword" runat="server" />
         <asp:Button ID ="btnsubmmit" Text ="Log" runat ="server"  OnClick ="submitEvevntMethod"/>
     <div>
     

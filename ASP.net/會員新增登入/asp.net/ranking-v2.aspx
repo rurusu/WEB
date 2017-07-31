@@ -32,10 +32,6 @@
         .auto-style8 {
             font-family: "微軟正黑體 Light";
         }
-        .auto-style9 {
-            font-family: "微軟正黑體 Light";
-            font-size: x-large;
-        }
         .pic-style1{
             height:100px                       
         }
@@ -65,6 +61,9 @@
             font-family: "微軟正黑體 Light";
             font-size: xx-large;
             background-color:#FFFF00;
+        }
+        .auto-style15 {
+            width: 100%;
         }
     </style>
 </head>
@@ -110,14 +109,26 @@
             <tr>
                 <td colspan="2" class="auto-style7">
                     <img src="pict/a12.png" class="auto-style12" />
+                    <br />
+                    <table class="auto-style15">
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
                     <br class="auto-style8" />
-                    <span class="auto-style9">2017-7-27&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 五組(每組10下)</span><br class="auto-style9" />
-                    <span class="auto-style9">2017-7-25&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 五組(每組10下)</span><br class="auto-style9" />
-                    <span class="auto-style9">2017-7-21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 四組(每組10下)</span><br class="auto-style9" />
-                    <span class="auto-style9">2017-7-18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 四組(每組10下)</span><br class="auto-style9" />
-                    <span class="auto-style9">2017-7-15&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 三組(每組10下)</span><br class="auto-style9" />
-                    <span class="auto-style9">2017-7-12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 三組(每組10下)</span><br class="auto-style9" />
-                    <span class="auto-style9">2017-7-10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 三組(每組10下)</span></td>
+                    </td>
             </tr>
             
             <tr>
