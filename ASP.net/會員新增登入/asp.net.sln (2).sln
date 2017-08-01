@@ -1,26 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "asp.net", "asp.net\", "{4F75103C-93B1-46B9-991C-3B97C162253E}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "asp.net", "asp.net\", "{BBA68FD8-081C-401E-B7E6-1108645036E8}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_63061"
-		Debug.AspNetCompiler.PhysicalPath = "D:\GitHub\WEB\ASP.net\會員新增登入\asp.net\"
+		Debug.AspNetCompiler.PhysicalPath = "asp.net\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63061\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_63061"
-		Release.AspNetCompiler.PhysicalPath = "D:\GitHub\WEB\ASP.net\會員新增登入\asp.net\"
+		Release.AspNetCompiler.PhysicalPath = "asp.net\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63061\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "63061"
+		SlnRelativePath = "asp.net\"
 	EndProjectSection
 EndProject
 Global
@@ -28,8 +29,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4F75103C-93B1-46B9-991C-3B97C162253E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F75103C-93B1-46B9-991C-3B97C162253E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA68FD8-081C-401E-B7E6-1108645036E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA68FD8-081C-401E-B7E6-1108645036E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
