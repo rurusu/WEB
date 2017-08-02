@@ -8,7 +8,7 @@
     <title></title>
 </head>
 <body>
-    <p>This is Registration</p>
+    <p>&nbsp;</p>
     <a href ="Default.aspx">Home</a> | <a href ="#">Registration</a>
     <form id="form1" runat="server">
     <div>

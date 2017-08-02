@@ -28,7 +28,7 @@ public partial class registrtion : System.Web.UI.Page
         conn = new MySqlConnection(connString);
         conn.Open();
         queryStr = "";
-        queryStr = "INSERT INTO ASPTEST.userregistration(firstnmae, lastname, email, phonenumber, username, password)" +
+        queryStr = "INSERT INTO BJWORK95.users(firstnmae, lastname, email, phonenumber, username, password)" +
             "VALUES('" + tbfirstname.Text + "','" + tblasttname.Text + "','" + tbemail.Text + "','" + tbphone.Text + "','" + tbusername.Text + "','" + tbpassword.Text + "')";
         cmd = new MySqlCommand(queryStr, conn);
         cmd.ExecuteReader();
