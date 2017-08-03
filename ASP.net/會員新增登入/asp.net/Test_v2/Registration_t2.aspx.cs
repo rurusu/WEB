@@ -11,13 +11,18 @@ public partial class Test_v2_Registration_t2 : System.Web.UI.Page
     MySqlConnection conn;
     MySqlCommand cmd;
     String queryStr;
+    MySqlDataReader reader;
     protected void Page_Load(object sender, EventArgs e)
     {
         lblShow.Visible = false;
+        lblNameCheck.Visible = false;
+        
     }
 
     protected void BtnConfirm_Click(object sender, EventArgs e)
     {
+        
+
         if (RequiredCode.IsValid && RequiredEmail.IsValid && RequiredFieldValidator1.IsValid && CompareCode.IsValid)
         {
             lblShow.Text = "新增資料成功";
@@ -34,7 +39,7 @@ public partial class Test_v2_Registration_t2 : System.Web.UI.Page
             cmd.Parameters.AddWithValue("@Birth", WUCtlBirthdayBox1.SelectDate);
             cmd.Parameters.AddWithValue("@Gender", WUCtlGender1
                 .selectGender);
-            cmd = new MySqlCommand(queryStr, conn);
+            
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -42,4 +47,15 @@ public partial class Test_v2_Registration_t2 : System.Web.UI.Page
 
 
     }
-}
+
+    
+
+
+    }
+   
+        
+    
+
+
+
+    

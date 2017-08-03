@@ -25,11 +25,11 @@
             <td>註冊頁面</td>
         </tr>
         <tr>
-            <td>[首頁]</td>
+            <td>[<a href="Default.aspx">首頁</a>]</td>
         </tr>
         <tr>
             <td>
-                <asp:Label ID="lblName" runat="server" Text="用戶名稱"></asp:Label>
+                <asp:Label ID="lblName" runat="server" Text="帳號"></asp:Label>
                 <asp:Label ID="Label1" runat="server" ForeColor="Red" Text="*"></asp:Label>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtName" Display="Dynamic" ErrorMessage="用戶欄位不可空白" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
@@ -37,6 +37,7 @@
         <tr>
             <td>
                 <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+                <asp:Label ID="lblNameCheck" runat="server"></asp:Label>
             </td>
         </tr>
         <tr>
@@ -70,6 +71,7 @@
         </tr>
         <tr>
             <td>
+                <asp:RegularExpressionValidator ID="RegularEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="Email格式不符，請重新填寫" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="RequiredEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email欄位不可為空" ForeColor="Red"></asp:RequiredFieldValidator>
                 <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
             </td>
@@ -84,9 +86,6 @@
                 <uc1:WUCtlBirthdayBox ID="WUCtlBirthdayBox1" runat="server" />
             </td>
         </tr>       
-        <tr>
-            <td class="auto-style4">&nbsp;</td>
-        </tr>
         <tr>
             <td class="auto-style4">性別</td>
         </tr>
