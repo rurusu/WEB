@@ -8,6 +8,29 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#datepicker").datepicker({                
+                altField: "#datepicker",
+                altFormat: "yy-mm-dd ",
+                dateFormat: "yy-mm-dd ",
+                //星期 此用於dateFormat的顯示，以及日曆框中滑鼠移到星期標題的顯示
+                dayNames: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+               
+                //星期  日曆框中的標題
+                dayNamesMin: ["日", "一", "二", "三", "四", "五", "六"],
+                //設定月份名稱
+                monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+                //設定月份縮寫
+                monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+                firstDay: 0,
+                defaultDate: "-15y"//預設日期少15年                
+            });
+        })
+    </script>
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -67,12 +90,12 @@
             <td>
                 <asp:Label ID="lblEmail" runat="server" Text="E-mal"></asp:Label>
                 <asp:Label ID="Label3" runat="server" ForeColor="Red" Text="*"></asp:Label>
+                <asp:RegularExpressionValidator ID="RegularEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="Email格式不符，請重新填寫" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="RequiredEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email欄位不可為空" ForeColor="Red"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:RegularExpressionValidator ID="RegularEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="Email格式不符，請重新填寫" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                <asp:RequiredFieldValidator ID="RequiredEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email欄位不可為空" ForeColor="Red"></asp:RequiredFieldValidator>
                 <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
             </td>
         </tr>
@@ -83,7 +106,7 @@
         </tr>
         <tr>
             <td>
-                <uc1:WUCtlBirthdayBox ID="WUCtlBirthdayBox1" runat="server" />
+               <asp:TextBox ID="datepicker" runat="server"></asp:TextBox>
             </td>
         </tr>       
         <tr>
