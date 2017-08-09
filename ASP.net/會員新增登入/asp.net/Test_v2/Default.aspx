@@ -21,7 +21,7 @@
     
         首頁<table class="auto-style2">
             <tr>
-                <td>[登入][註冊]</td>
+                <td>[<a href="Login.aspx">登入</a>][<a href="Registration_t2.aspx">註冊</a>]</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>

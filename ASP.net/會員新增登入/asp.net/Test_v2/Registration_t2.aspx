@@ -27,7 +27,7 @@
                 //設定月份縮寫
                 monthNamesShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
                 firstDay: 0,
-                defaultDate: "-15y"//預設日期少15年                
+                defaultDate: "-20y"//預設日期少20年                
             });
         })
     </script>
@@ -72,7 +72,8 @@
         </tr>
         <tr>
             <td>
-                <asp:TextBox ID="txtCode" runat="server"></asp:TextBox>
+                
+                <asp:TextBox ID="txtCode" runat="server" ></asp:TextBox>
             </td>
         </tr>
         <tr>
