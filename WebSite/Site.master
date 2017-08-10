@@ -4,7 +4,7 @@
 
 <html lang="zh">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %>BeJoin Workout</title>
@@ -12,9 +12,11 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <!--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />-->
     <link href="image/flower_icon.png" rel="shortcut icon" type="image/x-icon" />
+
+
 </head>
 <body>
     <form runat="server">
@@ -39,7 +41,71 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <style type="text/css">
+            .ah-navbar-inverse {
+                background-color: #2db82d;
+            }
+
+                .ah-navbar-inverse .navbar-brand {
+                    color: #d3f6d8;
+                }
+
+                    .ah-navbar-inverse .navbar-brand:hover,
+                    .ah-navbar-inverse .navbar-brand:focus {
+                        color: #ffffff;
+                        background-color: transparent;
+                    }
+
+                .ah-navbar-inverse .navbar-nav > li > a {
+                    color: #d3f6d8;
+                }
+
+                    .ah-navbar-inverse .navbar-nav > li > a:hover,
+                    .ah-navbar-inverse .navbar-nav > li > a:focus {
+                        color: #ffffff;
+                        background-color: transparent;
+                    }
+
+                .ah-navbar-inverse .navbar-collapse {
+                    border: none;
+                }
+
+                .ah-navbar-inverse .dropdown,
+                .ah-navbar-inverse .dropdown .caret {
+                    border-top-color: #ffffff;
+                    border-bottom-color: #ffffff;
+                }
+
+            .ah-dropdown-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 1000;
+                display: none;
+                float: left;
+                min-width: 160px;
+                padding: 5px 0;
+                margin: 2px 0 0;
+                font-size: 14px;
+                list-style: none;
+                background-color: #ffffff;
+                border: 1px solid #cccccc;
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                border-radius: 4px;
+                -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+                background-clip: padding-box;
+            }
+            .dropdown-menu > li > a {
+                color: #008800;
+            }
+            .dropdown-menu > li > a:hover {
+                color: #ffffff;
+                background-color: #2db82d;
+            }
+        </style>
+
+        <div class="navbar navbar-fixed-top ah-navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -47,22 +113,36 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">BeJoin Workout</a>
+                    <a class="navbar-brand" style="font-size: 18px;" runat="server" href="~/">BeJoin Workout</a>
                 </div>
+
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Analysis">紀錄分析</a></li>
+                        <li><a runat="server" href="~/AnalysisPages/Analysis">紀錄分析</a></li>
                         <li><a runat="server" href="~/Billboard">排行榜</a></li>
                         <li><a runat="server" href="~/Information">健身資訊</a></li>
-                        <li><a runat="server" href="~/Download">下載</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">火柴人<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">對戰</a></li>
+                                <li><a href="#">資訊</a></li>
+                                <li><a href="#">排行</a></li>
+                                <li><a href="#">商城</a></li>
+
+                            </ul>
+                        </li>
                     </ul>
+
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
+
+                        <%--登入前的右上--%>
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a runat="server" href="~/Account/Register">註冊</a></li>
                                 <li><a runat="server" href="~/Account/Login">登入</a></li>
                             </ul>
                         </AnonymousTemplate>
+
+                        <%-- 登入後的右上 --%>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
@@ -71,16 +151,23 @@
                                 </li>
                             </ul>
                         </LoggedInTemplate>
+
                     </asp:LoginView>
+
                 </div>
+
             </div>
         </div>
+
+
         <div class="container body-content">
+
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
+
             <hr />
-            <footer style="font-size:10px;">
-                <p>&copy; <%: DateTime.Now.Year %> - 我的 ASP.NET 應用程式</p>
+            <footer style="font-size: 10px;">
+                <p>&copy; <%: DateTime.Now.Year %> - Master Page</p>
             </footer>
         </div>
     </form>

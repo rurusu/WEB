@@ -317,7 +317,7 @@ if (!jQuery) { throw new Error("Bootstrap requires jQuery") }
     this.options     = options
     this.paused      =
     this.sliding     =
-    this.interval    =
+    this.interval    = 
     this.$active     =
     this.$items      = null
 
