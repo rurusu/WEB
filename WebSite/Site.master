@@ -43,7 +43,8 @@
 
         <style type="text/css">
             .ah-navbar-inverse {
-                background-color: #2db82d;
+                /*background-color: #2db82d;*/
+                background-color: #0099cc;
             }
 
                 .ah-navbar-inverse .navbar-brand {
@@ -62,8 +63,8 @@
 
                     .ah-navbar-inverse .navbar-nav > li > a:hover,
                     .ah-navbar-inverse .navbar-nav > li > a:focus {
-                        color: #ffffff;
-                        background-color: transparent;
+                        color: #009900;
+                        background-color: #fffff0;
                     }
 
                 .ah-navbar-inverse .navbar-collapse {
@@ -88,7 +89,7 @@
                 margin: 2px 0 0;
                 font-size: 14px;
                 list-style: none;
-                background-color: #ffffff;
+                background-color: #ffffcc;
                 border: 1px solid #cccccc;
                 border: 1px solid rgba(0, 0, 0, 0.15);
                 border-radius: 4px;
@@ -96,19 +97,28 @@
                 box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
                 background-clip: padding-box;
             }
+
             .dropdown-menu > li > a {
-                color: #008800;
+                color: #0099cc;
             }
-            .dropdown-menu > li > a:hover {
-                color: #ffffff;
-                background-color: #2db82d;
+
+                .dropdown-menu > li > a:hover {
+                    color: #d3f6d8;
+                    background-color: #0099cc;
+                }
+            .ah-navbar-inverse .navbar-toggle:hover {
+                    background-color: transparent;
+                }
+            .ah-navbar-inverse .navbar-toggle .icon-bar {
+                background-color: #d3f6d8;
             }
+                
         </style>
 
         <div class="navbar navbar-fixed-top ah-navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="margin-top:15px;">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -118,11 +128,11 @@
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/AnalysisPages/Analysis">紀錄分析</a></li>
+                        <li><a runat="server" href="~/Analysis">紀錄分析</a></li>
                         <li><a runat="server" href="~/Billboard">排行榜</a></li>
                         <li><a runat="server" href="~/Information">健身資訊</a></li>
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">火柴人<strong class="caret"></strong></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" style="background-color: #fffff0">
                                 <li><a href="#">對戰</a></li>
                                 <li><a href="#">資訊</a></li>
                                 <li><a href="#">排行</a></li>
@@ -132,8 +142,34 @@
                         </li>
                     </ul>
 
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <style type="text/css">
+                        .navbar-right .btn {
+                            margin-top: 11px;
+                            margin-right: 12px;
+                            background-color: transparent;
+                            border: none;
+                            color: #d3f6d8;
+                        }
 
+                            .navbar-right .btn:hover {
+                                color: #fff;
+                            }
+                    </style>
+                    <div id="BeforeLogin" runat="server" visible="false" class="navbar-collapse collapse navbar-right" style="padding-left:0px;">
+                        <ul class="nav navbar-nav">
+                            <li><a runat="server" href="~/Account/Register">註冊</a></li>
+                            <li><a runat="server" href="~/Account/Login">登入</a></li>
+                        </ul>
+                    </div>
+                    <div id="AfterLogin" runat="server" visible="false" class="navbar-collapse collapse navbar-right" style="padding-left:0px;">
+                        <ul class="nav navbar-nav">
+                            <li><a runat="server" href="~/Account/Personal" title="Manage your account">Hello, <%: (String)(Session["uname"])  %>!</a></li>
+                            <li><a runat="server" href="~/Account/Logout">登出</a></li>
+                        </ul>
+                    </div>
+
+                    <!--
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <%--登入前的右上--%>
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -151,14 +187,12 @@
                                 </li>
                             </ul>
                         </LoggedInTemplate>
-
                     </asp:LoginView>
+                    -->
 
                 </div>
-
             </div>
         </div>
-
 
         <div class="container body-content">
 

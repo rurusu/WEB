@@ -7,16 +7,18 @@
     <style type="text/css">
         /*花花*/
         .div-fly {
-            left: 10px;
-            bottom: 10px;
-            width: 30px;
-            height: 30px;
+            left: 20px;
+            bottom: 20px;
+            width: 44px;
+            height: 44px;
             float: left;
             position: fixed;
+            opacity: 0.7;
+            background-color: #33cc33;
             display: none;
-        }
-        #goTop {
-            
+            text-align: center;
+            line-height: 40px;
+            border-radius: 3px;
         }
         /*主體*/
         body {
@@ -140,7 +142,7 @@
 
     <!-- 花花goTop -->
     <div class="div-fly" id="goTop">
-        <a href="#"><img src="../image/flower_icon.png" style="width: 30px; height: 30px;" /></a>
+        <a href="#"><img src="../image/up-arrow.png" style="width:30px; height:30px;" /></a>
     </div>
 
 

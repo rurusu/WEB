@@ -15,6 +15,16 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        if (Session["uname"] == null)
+        {
+            BeforeLogin.Visible = true;
+        }
+        else
+        {
+            AfterLogin.Visible = true;
+        }
+
+        /*
         // 下面的程式碼有助於防禦 XSRF 攻擊
         var requestCookie = Request.Cookies[AntiXsrfTokenKey];
         Guid requestCookieGuidValue;
@@ -43,6 +53,7 @@ public partial class SiteMaster : MasterPage
         }
 
         Page.PreLoad += master_Page_PreLoad;
+        */
     }
 
     protected void master_Page_PreLoad(object sender, EventArgs e)
@@ -66,8 +77,23 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
+
+    /*
+    protected void btnLogin_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Account/Login.aspx");
+    }
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Account/Logout.aspx");
+    }
+    protected void btnRegister_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Account/Register.aspx");
+    }
+    */
 
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
     {

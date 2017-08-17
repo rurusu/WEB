@@ -4,11 +4,14 @@
 
     <style type="text/css">
         .btn {
-            text-align: left;
-            width:100%;
+            color: #00cccc;
+            text-align: center;
         }
+
+        .panel-group .btn:hover,
         .panel-group .btn:hover {
             text-decoration: none;
+            color: #00cc00;
         }
 
         .btn-margin {
@@ -56,9 +59,10 @@
                 text-align: center;
                 background-color: #e2fce2;
             }
+
             .personal-table thead {
                 font-size: 18px;
-                font:600;
+                font: 600;
             }
 
             .personal-table tbody tr:first-child {
@@ -67,10 +71,10 @@
 
                 .personal-table tbody tr:first-child td {
                     vertical-align: middle;
-                    width:40%;
+                    width: 40%;
                     background-color: #b0fcb0;
-
                 }
+
         .Panelbtn {
             width: 100px;
             height: 30px;
@@ -78,20 +82,19 @@
         }
     </style>
 
-    <h1>BillBoard</h1>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <img src="../image/index_sport_1.jpg" style="max-width: 100%">
+            <div class="col-xs-12" style="border-radius: 5px;">
+                <img src="../image/index_sport_2.jpg" style="max-width: 100%; border: 1px solid transparent; border-radius: 5px;">
             </div>
         </div>
         <hr />
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-xs-2">
 
                 <div class="panel-group" id="RightLink">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="panel panel-default" style="border: none; text-align: right;">
+                        <div class="panel-heading" style="background-color: transparent;">
                             <div style="padding: 2px">
                                 <asp:Button ID="btnTriceps" runat="server" Text="三頭肌" CssClass="btn btn-link" OnClick="btnTriceps_Click" />
                             </div>
@@ -152,7 +155,7 @@
                 --%>
             </div>
 
-            <div class="col-md-10">
+            <div class="col-xs-10">
 
                 <div style="max-width: 100%">
                     <table id="PersonalRecord" class="table personal-table">
@@ -164,23 +167,15 @@
                         <tbody>
                             <tr>
                                 <td rowspan="5">
-                                    <p style="color:#888">顯示個人圖片（ID為PersonalPic）</p>
+                                    <p style="color: #888">顯示個人圖片（ID為PersonalPic）</p>
                                     <asp:Image runat="server" ID="PersonalPic" />
                                     <asp:Label runat="server" ID="BoardUserName" Text="Alice"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label runat="server" ID="Item" Text="項目名稱"></asp:Label>
+                                    <asp:GridView ID="gvPersonal" runat="server"></asp:GridView>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <asp:Label runat="server" ID="Record" Text="項目紀錄"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
                             </tr>
                         </tbody>
                     </table>
@@ -194,11 +189,17 @@
                     <asp:Button runat="server" ID="btnWeeks" Text="週排行" CssClass="Panelbtn" OnClick="btnWeeks_Click" />
                     <asp:Button runat="server" ID="btnMonths" Text="月排行" CssClass="Panelbtn" OnClick="btnMonths_Click" />
                     <asp:Panel runat="server" ID="pnlWeeks">
-                        <asp:Label runat="server" ID="lblShowWeek" Text="ShowWeek"></asp:Label>
+
+                        <asp:Label runat="server" ID="lblShowWeek" Text="ShowWeek" CssClass="btn text-success"></asp:Label>
+                        <asp:Button runat="server" ID="btnSelectWeek" Text="本週" OnClick="btnSelectWeek_Click" CssClass="btn btn-success btn-sm" />
+
                         <asp:GridView runat="server" ID="gvWeeks" CssClass="table table-style"></asp:GridView>
                     </asp:Panel>
                     <asp:Panel runat="server" ID="pnlMonths">
-                        <asp:Label runat="server" ID="lblShowMonth" Text="ShowMonth"></asp:Label>
+
+                        <asp:Label runat="server" ID="lblShowMonth" Text="ShowMonth" CssClass="btn text-success"></asp:Label>
+                        <asp:Button runat="server" ID="btnSelectMonth" Text="7月" OnClick="btnSelectMonth_Click" CssClass="btn btn-success btn-sm" />
+
                         <asp:GridView runat="server" ID="gvMonths" CssClass="table table-style"></asp:GridView>
                     </asp:Panel>
                 </asp:Panel>

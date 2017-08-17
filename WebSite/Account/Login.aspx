@@ -6,7 +6,7 @@
     <h2><%: Title %></h2>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-xs-12">
             <section id="loginForm">
                 <div class="form-horizontal">
                     <hr />
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
+                        <div class="col-md-offset-2 col-xs-10">
                             <div class="checkbox">
                                 <asp:CheckBox runat="server" ID="RememberMe" />
                                 <asp:Label runat="server" AssociatedControlID="RememberMe">記住我</asp:Label>
@@ -39,23 +39,30 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
+                        <div class="col-md-offset-2 col-xs-10">
+                            <asp:Label ID="lblShow" runat="server" Text=""></asp:Label>
+                            <br />
                             <asp:Button runat="server" OnClick="LogIn" Text="登入" CssClass="btn btn-default" />
+                            <br /><br />
+                            <p>
+                                如果您不是會員的話，歡迎
+                                <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">註冊</asp:HyperLink>
+                            </p>
                         </div>
                     </div>
                 </div>
-                <p>
-                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">註冊</asp:HyperLink>
-                    如果您沒有本機帳戶。
-                </p>
+
             </section>
         </div>
 
+        <!--
         <div class="col-md-4">
             <section id="socialLoginForm">
                 <uc:openauthproviders runat="server" id="OpenAuthLogin" />
             </section>
         </div>
+        -->
+
     </div>
 </asp:Content>
 

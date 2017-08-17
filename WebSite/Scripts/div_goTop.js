@@ -2,10 +2,10 @@
 
     $(window).scroll(function () {
         if ($(window).scrollTop() > 90) {
-            $("#goTop").fadeIn(120);
+            $("#goTop").fadeIn(130);
         }
         else {
-            $("#goTop").fadeOut(120);
+            $("#goTop").fadeOut(130);
         }
     });
 

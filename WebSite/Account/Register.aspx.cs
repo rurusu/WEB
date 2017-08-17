@@ -2,23 +2,40 @@
 using System;
 using System.Linq;
 using System.Web.UI;
-using WebSite;
+using System.Data.SqlClient;
 
 public partial class Account_Register : Page
 {
+    SqlConnection con;
+    SqlCommand cmd;
+    String queryStr;
+    SqlDataReader reader;
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+    }
     protected void CreateUser_Click(object sender, EventArgs e)
     {
-        var manager = new UserManager();
-        var user = new ApplicationUser() { UserName = UserName.Text };
-        IdentityResult result = manager.Create(user, Password.Text);
-        if (result.Succeeded)
+        if (RequiredCode.IsValid && RequiredEmail.IsValid && RequiredFieldValidator1.IsValid && CompareCode.IsValid &&RequiredCode.IsValid&&RegularEmail.IsValid)
         {
-            IdentityHelper.SignIn(manager, user, isPersistent: false);
-            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-        }
-        else
-        {
-            ErrorMessage.Text = result.Errors.FirstOrDefault();
+            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppString"].ConnectionString;
+            con = new SqlConnection(connString);
+            con.Open();
+            queryStr = "";
+            queryStr = "insert into bjuser (u_name,u_birth,u_password,u_email,u_gender) values (@username,@Birth, @passwd, @Email, @Gender)";
+            cmd = new SqlCommand(queryStr, con);
+            cmd.Parameters.AddWithValue("@username", txtName.Text);
+            cmd.Parameters.AddWithValue("@passwd", txtCode.Text);
+            cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+            cmd.Parameters.AddWithValue("@Birth", wbfCtrlSelectBirth.SelectDate);
+            if (WUCtlGender1.selectGender == "男")
+                cmd.Parameters.AddWithValue("@Gender", 1);
+            else
+                cmd.Parameters.AddWithValue("@Gender", 0);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            
+            Response.Redirect("~/");
         }
     }
 }
