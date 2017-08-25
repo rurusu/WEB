@@ -3,9 +3,22 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <script type="text/javascript" src="Scripts/div_goTop.js"></script>
+    <script type="text/javascript" src="Scripts/modernizr.custom.86080.js"></script>
+    <link rel="stylesheet" type="text/css" href="Content/demo.css" />
+    <link rel="stylesheet" type="text/css" href="Content/style1.css" />
 
     <style type="text/css">
-        /*花花*/
+        /* QR */
+        .div-qr {
+            left: 50px;
+            bottom: 50px;
+            width: 80px;
+            height: auto;
+            float: left;
+            position: fixed;
+            border-radius: 5px;
+        }
+        /* go top */
         .div-fly {
             left: 20px;
             bottom: 20px;
@@ -34,116 +47,64 @@
             display: inline-block;
             max-width: 100%;
         }
+
         .download-logo {
             width: 200px;
         }
+
         .download-logo-style {
             display: inline-block;
             max-width: 100%;
             padding: 30px;
         }
+
         .qr {
             width: 100px;
         }
+
         .qr-style {
             display: inline-block;
             max-width: 100%;
             padding: 30px;
         }
-
     </style>
 
-    <div>
-        <div class="carousel slide" id="index-carousel" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li class="active" data-slide-to="0" data-target="#index-carousel"></li>
-                <li data-slide-to="1" data-target="#index-carousel"></li>
-                <li data-slide-to="2" data-target="#index-carousel"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img alt="Carousel Bootstrap First" src="../image/index_sport_1.jpg" />
-                    <div class="carousel-caption">
-                        <h4>圖片-1</h4>
-                        <p>1600x500為佳</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img alt="Carousel Bootstrap Second" src="../image/index_sport_2.jpg" />
-                    <div class="carousel-caption">
-                        <h4>圖片-2</h4>
-                        <p>1600x500為佳</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img alt="Carousel Bootstrap Third" src="../image/index_sport_3.jpg" />
-                    <div class="carousel-caption">
-                        <h4>圖片-3</h4>
-                        <p>1600x500為佳</p>
-                    </div>
-                </div>
-            </div>
-            <a class="left carousel-control" href="#index-carousel" data-slide="prev" hidden="hidden"><span class="glyphicon glyphicon-chevron-left"></span></a>
-            <a class="right carousel-control" href="#index-carousel" data-slide="next" hidden="hidden"><span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
+    <ul class="cb-slideshow">
+        <li>
+            <span>Image 01</span>
+            <div><h3></h3></div>
+        </li>
+        <li>
+            <span>Image 02</span>
+            <div><h3></h3></div>
+        </li>
+        <li>
+            <span>Image 03</span>
+            <div><h3></h3></div>
+        </li>
+        <li>
+            <span>Image 04</span>
+            <div><h3></h3></div>
+        </li>
+        <li>
+            <span>Image 05</span>
+            <div><h3></h3></div>
+        </li>
+        <li>
+            <span>Image 06</span>
+            <div><h3></h3></div>
+        </li>
+    </ul>
 
-    </div>
-
-    <div class="jumbotron">
-        <div class="row">
-            <div class="col-md-6 describe-style" style="max-width: 50%;">
-                <p>下載下載下載下載下載下載下載下載下載下載</p>
-                <p>DOWNLOAD, DOWNLOAD, DOWNLOAD, DOWNLOAD, DOWNLOAD, DOWNLOAD</p>
-            </div>
-            <div class="col-md-6" style="max-width: 50%;">
-                <div class="download-logo-style">
-                    <img src="image/download_ios.png" class="download-logo" style="margin-right: 20px; margin-bottom: 10px;" />
-                </div>
-                <div class="qr-style">
-                    <img src="image/qrTest.png" class="qr" style="margin-left: 20px; margin-bottom: 10px;" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <div class="row">
-            <div class="col-md-6 describe-style" style="max-width: 50%;">
-                <p>下載下載下載下載下載下載下載下載下載下載</p>
-                <p>DOWNLOAD, DOWNLOAD, DOWNLOAD, DOWNLOAD, DOWNLOAD, DOWNLOAD</p>
-            </div>
-            <div class="col-md-6" style="max-width: 50%;">
-                <div class="download-logo-style">
-                    <img src="image/download_ios.png" class="download-logo" style="margin-right: 20px; margin-bottom: 10px;" />
-                </div>
-                <div class="qr-style">
-                    <img src="image/qrTest.png" class="qr" style="margin-left: 20px; margin-bottom: 10px;" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="jumbotron">
-        <div class="row">
-            <div class="col-md-6 describe-style" style="max-width: 50%;">
-                <p>下載下載下載下載下載下載下載下載下載下載</p>
-                <p>DOWNLOAD, DOWNLOAD, DOWNLOAD, DOWNLOAD, DOWNLOAD, DOWNLOAD</p>
-            </div>
-            <div class="col-md-6" style="max-width: 50%;">
-                <div class="download-logo-style">
-                    <img src="image/download_ios.png" class="download-logo" style="margin-right: 20px; margin-bottom: 10px;" />
-                </div>
-                <div class="qr-style">
-                    <img src="image/qrTest.png" class="qr" style="margin-left: 20px; margin-bottom: 10px;" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 花花goTop -->
+    <!-- goTop -->
     <div class="div-fly" id="goTop">
-        <a href="#"><img src="../image/up-arrow.png" style="width:30px; height:30px;" /></a>
+        <a href="#">
+            <img src="../image/up-arrow.png" style="width: 30px; height: 30px;" /></a>
     </div>
 
+    <!-- QR -->
+    <div class="div-qr">
+        <img src="image/qrTest.png" style="width: 170px; height: auto;" />
+    </div>
 
 </asp:Content>

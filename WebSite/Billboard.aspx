@@ -1,86 +1,11 @@
 ﻿<%@ Page Title="排行榜 - " Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Billboard.aspx.cs" Inherits="Billboard" %>
 
+<%@ Import Namespace="System" %>
+<%@ Import Namespace="System.Data" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <style type="text/css">
-        .btn {
-            color: #00cccc;
-            text-align: center;
-        }
-
-        .panel-group .btn:hover,
-        .panel-group .btn:hover {
-            text-decoration: none;
-            color: #00cc00;
-        }
-
-        .btn-margin {
-            margin-left: 50px;
-        }
-
-        .table-style {
-            border: none;
-        }
-
-            .table-style th a {
-                color: #fff;
-                text-decoration: none;
-            }
-
-            .table-style th,
-            .table-style tr,
-            .table-style td {
-                border: none;
-            }
-
-            .table-style th {
-                background-color: #008800;
-                color: #fff;
-            }
-
-                .table-style th:first-child {
-                    width: 120px;
-                }
-
-            .table-style tr {
-                padding-left: 8px;
-            }
-
-                .table-style tr:hover {
-                    background-color: #e2fce2;
-                }
-
-        .personal-table {
-            background-color: #fff;
-            border-radius: 4px;
-        }
-
-            .personal-table thead {
-                text-align: center;
-                background-color: #e2fce2;
-            }
-
-            .personal-table thead {
-                font-size: 18px;
-                font: 600;
-            }
-
-            .personal-table tbody tr:first-child {
-                text-align: center;
-            }
-
-                .personal-table tbody tr:first-child td {
-                    vertical-align: middle;
-                    width: 40%;
-                    background-color: #b0fcb0;
-                }
-
-        .Panelbtn {
-            width: 100px;
-            height: 30px;
-            border: none;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="Content/forBillBoard.css" />
 
     <div class="container-fluid">
         <div class="row">
@@ -96,34 +21,26 @@
                     <div class="panel panel-default" style="border: none; text-align: right;">
                         <div class="panel-heading" style="background-color: transparent;">
                             <div style="padding: 2px">
-                                <asp:Button ID="btnTriceps" runat="server" Text="三頭肌" CssClass="btn btn-link" OnClick="btnTriceps_Click" />
+                                <asp:Button ID="btnTriceps" runat="server" Text="手臂" CssClass="btn btn-link" OnClick="btnTriceps_Click" />
                             </div>
                             <div style="padding: 2px">
-                                <asp:Button ID="btnBiceps" runat="server" Text="二頭肌" CssClass="btn btn-link" OnClick="btnBiceps_Click" />
+                                <asp:Button ID="btnBiceps" runat="server" Text="肩部" CssClass="btn btn-link" OnClick="btnBiceps_Click" />
                             </div>
                             <div style="padding: 2px">
-                                <asp:Button ID="btnBack" runat="server" Text="背肌" CssClass="btn btn-link" OnClick="btnBack_Click" />
+                                <asp:Button ID="btnBack" runat="server" Text="背部" CssClass="btn btn-link" OnClick="btnBack_Click" />
                             </div>
                             <div style="padding: 2px">
-                                <asp:Button ID="btnShoulders" runat="server" Text="肩膀" CssClass="btn btn-link" OnClick="btnShoulders_Click" />
+                                <asp:Button ID="btnShoulders" runat="server" Text="胸部" CssClass="btn btn-link" OnClick="btnShoulders_Click" />
                             </div>
                             <div style="padding: 2px">
-                                <asp:Button ID="btnChest" runat="server" Text="胸肌" CssClass="btn btn-link" OnClick="btnChest_Click" />
+                                <asp:Button ID="btnChest" runat="server" Text="腿部" CssClass="btn btn-link" OnClick="btnChest_Click" />
+                            </div>
+
+                            <div style="padding: 2px">
+                                <asp:Button ID="btnWalking" runat="server" Text="跑步" CssClass="btn btn-link" OnClick="btnWalking_Click" />
                             </div>
                             <div style="padding: 2px">
-                                <asp:Button ID="btnForearms" runat="server" Text="前臂" CssClass="btn btn-link" OnClick="btnForearms_Click" />
-                            </div>
-                            <div style="padding: 2px">
-                                <asp:Button ID="btnGlutes" runat="server" Text="臀肌" CssClass="btn btn-link" OnClick="btnGlutes_Click" />
-                            </div>
-                            <div style="padding: 2px">
-                                <asp:Button ID="btnAbs" runat="server" Text="腹肌" CssClass="btn btn-link" OnClick="btnAbs_Click" />
-                            </div>
-                            <div style="padding: 2px">
-                                <asp:Button ID="btnWalking" runat="server" Text="健走" CssClass="btn btn-link" OnClick="btnWalking_Click" />
-                            </div>
-                            <div style="padding: 2px">
-                                <asp:Button ID="btnRunning" runat="server" Text="跑步" CssClass="btn btn-link" OnClick="btnRunning_Click" />
+                                <asp:Button ID="btnRunning" runat="server" Text="健走" CssClass="btn btn-link" OnClick="btnRunning_Click" />
                             </div>
                             <div style="padding: 2px">
                                 <asp:Button ID="btnCycling" runat="server" Text="單車" CssClass="btn btn-link" OnClick="btnCycling_Click" />
@@ -131,28 +48,6 @@
                         </div>
                     </div>
                 </div>
-
-                <%--
-                <div class="btn-group-vertical">
-                    <!-- 要設Button事件 -->
-                    <!-- 點擊後導向各類排行榜頁面 -->
-                    <!-- 有N頁 -->
-                    <!-- 還是改成別的???????? -->
-                    <!-- divLink比較簡單的樣子 -->
-                    <asp:Button ID="btnTriceps" runat="server" Text="三頭肌" CssClass="btn btn-link" OnClick="btnTriceps_Click"  />
-                    <asp:Button ID="btnBiceps" runat="server" Text="二頭肌" CssClass="btn btn-link" OnClick="btnBiceps_Click" />
-                    <asp:Button ID="btnBack" runat="server" Text="背肌" CssClass="btn btn-link" OnClick="btnBack_Click" />
-                    <asp:Button ID="btnShoulders" runat="server" Text="肩膀" CssClass="btn btn-link" OnClick="btnShoulders_Click" />
-                    <asp:Button ID="btnChest" runat="server" Text="胸肌" CssClass="btn btn-link" OnClick="btnChest_Click" />
-                    <asp:Button ID="btnForearms" runat="server" Text="前臂" CssClass="btn btn-link" OnClick="btnForearms_Click" />
-                    <asp:Button ID="btnGlutes" runat="server" Text="臀肌" CssClass="btn btn-link" OnClick="btnGlutes_Click" />
-                    <asp:Button ID="btnAbs" runat="server" Text="腹肌" CssClass="btn btn-link" OnClick="btnAbs_Click" />
-                    <asp:Button ID="btnSwimming" runat="server" Text="游泳" CssClass="btn btn-link" OnClick="btnSwimming_Click" />
-                    <asp:Button ID="btnWalking" runat="server" Text="健走" CssClass="btn btn-link" OnClick="btnWalking_Click" />
-                    <asp:Button ID="btnRunning" runat="server" Text="跑步" CssClass="btn btn-link" OnClick="btnRunning_Click" />
-                    <asp:Button ID="btnCycling" runat="server" Text="單車" CssClass="btn btn-link" OnClick="btnCycling_Click" />
-                </div>
-                --%>
             </div>
 
             <div class="col-xs-10">
@@ -167,14 +62,15 @@
                         <tbody>
                             <tr>
                                 <td rowspan="5">
-                                    <p style="color: #888">顯示個人圖片（ID為PersonalPic）</p>
-                                    <asp:Image runat="server" ID="PersonalPic" />
-                                    <asp:Label runat="server" ID="BoardUserName" Text="Alice"></asp:Label>
+                                    <asp:Image runat="server" ID="imgPersonalPic" CssClass="image-style" />
+                                    <br />
+                                    <asp:Label runat="server" ID="lblBoardUserName" Text=""></asp:Label>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:GridView ID="gvPersonal" runat="server"></asp:GridView>
+                                    <asp:GridView ID="gvPersonal" runat="server" CssClass="per-record"></asp:GridView>
+                                    <asp:Label ID="lblshow" runat="server" Text="" Visible="false" />
                                 </td>
                             </tr>
                         </tbody>
@@ -188,19 +84,54 @@
                 <asp:Panel runat="server" ID="PanelForBillboard">
                     <asp:Button runat="server" ID="btnWeeks" Text="週排行" CssClass="Panelbtn" OnClick="btnWeeks_Click" />
                     <asp:Button runat="server" ID="btnMonths" Text="月排行" CssClass="Panelbtn" OnClick="btnMonths_Click" />
+
                     <asp:Panel runat="server" ID="pnlWeeks">
 
-                        <asp:Label runat="server" ID="lblShowWeek" Text="ShowWeek" CssClass="btn text-success"></asp:Label>
-                        <asp:Button runat="server" ID="btnSelectWeek" Text="本週" OnClick="btnSelectWeek_Click" CssClass="btn btn-success btn-sm" />
+                        <asp:Label runat="server" ID="lblShowWeek" Text="ShowWeek" CssClass="btn text-success" Visible="false"></asp:Label>
+                        <asp:Button runat="server" ID="btnSelectWeek" Text="本週" OnClick="btnSelectWeek_Click" CssClass="btn btn-success btn-sm" Visible="false" />
 
-                        <asp:GridView runat="server" ID="gvWeeks" CssClass="table table-style"></asp:GridView>
+                        <asp:GridView runat="server" ID="gvWeeks" CssClass="board-style table table-style">
+                        </asp:GridView>
+
                     </asp:Panel>
+
                     <asp:Panel runat="server" ID="pnlMonths">
 
-                        <asp:Label runat="server" ID="lblShowMonth" Text="ShowMonth" CssClass="btn text-success"></asp:Label>
-                        <asp:Button runat="server" ID="btnSelectMonth" Text="7月" OnClick="btnSelectMonth_Click" CssClass="btn btn-success btn-sm" />
+                        <asp:Label runat="server" ID="lblShowMonth" Text="ShowMonth" CssClass="btn text-success" Visible="false"></asp:Label>
+                        <asp:Button runat="server" ID="btnSelectMonth" Text="7月" OnClick="btnSelectMonth_Click" CssClass="btn btn-success btn-sm" Visible="false" />
 
-                        <asp:GridView runat="server" ID="gvMonths" CssClass="table table-style"></asp:GridView>
+                        <!--<asp:Repeater runat="server" ID="reptImg">
+                            <ItemTemplate>
+                                <asp:Image runat="server" ID="imgCrown" BoundColumnName="名次" ImageList="1, ~/image/board/crown-1st.png" />
+                            </ItemTemplate>
+                        </asp:Repeater>-->
+                        <asp:GridView runat="server" ID="gvMonths" OnRowDataBound="gvMonths_RowDataBound" CssClass="board-style table table-style">
+                        </asp:GridView>
+
+                    </asp:Panel>
+                    <asp:Panel runat="server" ID="test">
+
+                        <table class="board-style table table-style">
+                            <tr>
+                                <td>名次</td>
+                                <td>使用者</td>
+                                <td>使用者</td>
+                                <td>名稱</td>
+                                <td>運動總量</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <asp:Image runat="server" CssClass="image-style" ImageUrl="~/photo/airplane@hotmail.com.png" />
+                                </td>
+                                <td>
+                                    <img src="/photo/airplane@hotmail.com.png" class="image-style" />
+                                </td>
+                                <td>艾爾普蘭</td>
+                                <td>30</td>
+                            </tr>
+                        </table>
+
                     </asp:Panel>
                 </asp:Panel>
 

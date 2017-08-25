@@ -15,6 +15,7 @@
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <!--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />-->
     <link href="image/flower_icon.png" rel="shortcut icon" type="image/x-icon" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 
 
 </head>
@@ -77,27 +78,6 @@
                     border-bottom-color: #ffffff;
                 }
 
-            .ah-dropdown-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                z-index: 1000;
-                display: none;
-                float: left;
-                min-width: 160px;
-                padding: 5px 0;
-                margin: 2px 0 0;
-                font-size: 14px;
-                list-style: none;
-                background-color: #ffffcc;
-                border: 1px solid #cccccc;
-                border: 1px solid rgba(0, 0, 0, 0.15);
-                border-radius: 4px;
-                -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-                background-clip: padding-box;
-            }
-
             .dropdown-menu > li > a {
                 color: #0099cc;
             }
@@ -106,40 +86,84 @@
                     color: #d3f6d8;
                     background-color: #0099cc;
                 }
+
             .ah-navbar-inverse .navbar-toggle:hover {
-                    background-color: transparent;
-                }
+                background-color: transparent;
+            }
+
             .ah-navbar-inverse .navbar-toggle .icon-bar {
                 background-color: #d3f6d8;
             }
-                
         </style>
 
         <div class="navbar navbar-fixed-top ah-navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="margin-top:15px;">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="margin-top: 15px;">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style="font-size: 18px;" runat="server" href="~/">BeJoin Workout</a>
+                    <a class="navbar-brand" runat="server" href="~/">
+                        <img src="../image/logo0099cc.png" />
+                    </a>
                 </div>
+
+                <script type="text/javascript">
+                    $(function () {
+                        $('.navbar-brand').hover(function () {
+                            $('.navbar-brand>img').attr({ src: '../image/logo0099cchover.png' });
+                        },
+                            function () {
+                                $('.navbar-brand>img').attr({ src: '../image/logo0099cc.png' });
+                            });
+                    });
+                </script>
+
+                <style type="text/css">
+                    .li-dropdown {
+                        position: relative;
+                        display: inline-block;
+                    }
+
+                    .li-dropdown-content {
+                        display: none;
+                        position: absolute;
+                        /*background-color: #f9f9f9;*/
+                        min-width: 160px;
+                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                        z-index: 1;
+                    }
+
+                        .li-dropdown-content a {
+                            /*color: black;*/
+                            /*padding: 12px 16px;*/
+                            text-decoration: none;
+                            display: block;
+                        }
+
+                    .li-dropdown:hover .li-dropdown-content {
+                        display: block;
+                    }
+
+                    ul {
+                        text-align: left;
+                    }
+                </style>
 
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Analysis">紀錄分析</a></li>
-                        <li><a runat="server" href="~/Billboard">排行榜</a></li>
-                        <li><a runat="server" href="~/Information">健身資訊</a></li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">火柴人<strong class="caret"></strong></a>
-                            <ul class="dropdown-menu" style="background-color: #fffff0">
-                                <li><a href="#">對戰</a></li>
-                                <li><a href="#">資訊</a></li>
-                                <li><a href="#">排行</a></li>
-                                <li><a href="#">商城</a></li>
 
+                        <li class="li-dropdown"><a runat="server" href="#">運動紀錄</a>
+                            <ul class="li-dropdown-content dropdown-menu" style="background-color: #fffff0;">
+                                <li><a runat="server" href="Import.aspx">輸入紀錄</a></li>
+                                <li><a runat="server" href="~/Analysis">紀錄分析</a></li>
                             </ul>
                         </li>
+
+                        <li><a runat="server" href="~/Billboard">排行榜</a></li>
+                        <li><a runat="server" href="~/Information">健身資訊</a></li>
+
                     </ul>
 
                     <style type="text/css">
@@ -155,40 +179,18 @@
                                 color: #fff;
                             }
                     </style>
-                    <div id="BeforeLogin" runat="server" visible="false" class="navbar-collapse collapse navbar-right" style="padding-left:0px;">
+                    <div id="BeforeLogin" runat="server" visible="false" class="navbar-collapse collapse navbar-right" style="padding-left: 0px;">
                         <ul class="nav navbar-nav">
                             <li><a runat="server" href="~/Account/Register">註冊</a></li>
                             <li><a runat="server" href="~/Account/Login">登入</a></li>
                         </ul>
                     </div>
-                    <div id="AfterLogin" runat="server" visible="false" class="navbar-collapse collapse navbar-right" style="padding-left:0px;">
+                    <div id="AfterLogin" runat="server" visible="false" class="navbar-collapse collapse navbar-right" style="padding-left: 0px;">
                         <ul class="nav navbar-nav">
-                            <li><a runat="server" href="~/Account/Personal" title="Manage your account">Hello, <%: (String)(Session["uname"])  %>!</a></li>
+                            <li><a runat="server" href="~/Account/Personal" title="Manage your account">Hello, <%: (Session[Dictionary.SK_LOGGIN_User]as bjuser).u_name  %>&nbsp;!</a></li>
                             <li><a runat="server" href="~/Account/Logout">登出</a></li>
                         </ul>
                     </div>
-
-                    <!--
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <%--登入前的右上--%>
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">註冊</a></li>
-                                <li><a runat="server" href="~/Account/Login">登入</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-
-                        <%-- 登入後的右上 --%>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="登出" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
-                    -->
 
                 </div>
             </div>
@@ -201,7 +203,7 @@
 
             <hr />
             <footer style="font-size: 10px;">
-                <p>&copy; <%: DateTime.Now.Year %> - Master Page</p>
+                <p>&copy; <%: DateTime.Now.Year %> - BeJoin Workout, N.W.K.S.I</p>
             </footer>
         </div>
     </form>

@@ -22,6 +22,5 @@ public partial class Test_v2_WUCtlGender : System.Web.UI.UserControl
             dlGender.Items.Add("女");
             dlGender.Text = "男";
         }
-        
     }
 }

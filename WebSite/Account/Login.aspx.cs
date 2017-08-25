@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using WebSite;
+using System.Linq;
 
 public partial class Account_Login : Page
 {
@@ -27,47 +28,18 @@ public partial class Account_Login : Page
 
     protected void LogIn(object sender, EventArgs e)
     {
-        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppString"].ConnectionString;
-        con = new SqlConnection(connString);
-        con.Open();
-        queryStr = "";
-        queryStr = "select * from bjuser where u_name = @username and u_password =@userpasswd";
-        cmd = new SqlCommand(queryStr, con);
-        cmd.Parameters.AddWithValue("@username", UserName.Text);
-        cmd.Parameters.AddWithValue("@userpasswd", Password.Text);
-        reader = cmd.ExecuteReader();
-        String name = "";
-
-        bool CookiePersistent = RememberMe.Checked;
-        string UserGroup = "bjuser";
-
-        while (reader.HasRows && reader.Read())
+        
+        LinqDataContext lqdb = new LinqDataContext();
+        bjuser user = lqdb.bjuser.FirstOrDefault(m => m.u_email.Equals(Email.Text) && m.u_password.Equals(Password.Text));
+        if (user != null)
         {
-            name = reader.GetString(reader.GetOrdinal("u_name"));
-        }
-        if (reader.HasRows)
-        {
-            Session["uname"] = name;
-
-            if (CookiePersistent == false)
-            {
-                FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, UserName.Text,
-                                                       DateTime.Now, DateTime.Now.AddMinutes(60), CookiePersistent, UserGroup);
-                String encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-                HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-
-                authCookie.Expires = authTicket.Expiration;
-
-                Response.Cookies.Add(authCookie);
-            }
+            Session[Dictionary.SK_LOGGIN_User] = user;
             Response.BufferOutput = true;
-            Response.Redirect("~/");
+            Response.Redirect("~/Default.aspx");
         }
         else
         {
             lblShow.Text = "帳號或密碼錯誤，請重新輸入";
-        }
-        reader.Close();
-        con.Close();
+        }      
     }
 }

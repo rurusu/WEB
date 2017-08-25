@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="wbfUCSelectSport.ascx.cs" Inherits="wbfUCSelectSport" %>
+<asp:DropDownList ID="dlistSelectSport" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dlistSelectSport_SelectedIndexChanged"></asp:DropDownList>

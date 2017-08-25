@@ -1,0 +1,180 @@
+﻿
+.btn {
+    color: #00cccc;
+    text-align: center;
+}
+
+.panel-group .btn:hover,
+.panel-group .btn:hover {
+    text-decoration: none;
+    color: #00cc00;
+}
+
+.btn-margin {
+    margin-left: 50px;
+}
+
+.table-style {
+    border: 1px solid transparent;
+}
+
+    .table-style th a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .table-style th,
+    .table-style tr,
+    .table-style td {
+        border: 1px solid transparent;
+    }
+
+    .table-style th {
+        background-color: transparent;
+        color: #0099cc;
+        font-weight: 400;
+    }
+
+        .table-style th:nth-child(1) {
+            width: 30%;
+            text-align: center;
+        }
+
+    .table-style td:nth-child(1) {
+        text-align: center;
+    }
+
+    .table-style th:nth-child(2) {
+        width: 30%;
+    }
+
+    .table-style td:nth-child(2) {
+    }
+
+    .table-style tr {
+        /*padding-left: 8px;*/
+    }
+
+/*.table-style tr:hover {
+                    background-color: #e2fce2;
+                }*/
+
+.Panelbtn {
+    background-color: #0099cc;
+    width: 100px;
+    height: 30px;
+    border: none;
+}
+
+.image-style {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 6px;
+}
+
+/* 個人紀錄 */
+.personal-table {
+    background-color: transparent;
+}
+
+    .personal-table thead {
+        text-align: center;
+        border-bottom: 3px solid #d3f6d8;
+        color: #d3f6d8;
+        background-color: #0099cc;
+    }
+
+    .personal-table thead {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .personal-table tbody tr:first-child {
+        text-align: center;
+    }
+
+        .personal-table tbody tr:first-child td:first-child {
+            vertical-align: top;
+            color: #009900;
+            padding-top: 30px;
+        }
+        .personal-table tbody tr:last-child td:first-child {
+            background-color: transparent;
+        }
+
+/* 個人紀錄裡的GridView */
+.per-record {
+    width: 100%;
+    background-color: transparent;
+}
+
+    .per-record th,
+    .per-record tr,
+    .per-record td {
+        border: 1px solid transparent;
+        background-color: transparent;
+    }
+
+    .per-record th {
+        background-color: #fff;
+        border-bottom: 2px solid #d3f6d8;
+        height: 30px;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .per-record tr:hover {
+        background-color: #d3f6d8;
+    }
+        .per-record td:nth-child(1) {
+        width: 30%;
+    }
+
+    .per-record td:nth-child(2) {
+        width: 30%;
+    }
+
+/* 第一名 */
+.st-style {
+    height: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffb616;
+}
+
+.board-style tr:nth-child(2) {
+    height: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffb616;
+}
+
+/* 第二名 */
+.nd-style {
+    height: 25px;
+    font-size: 23px;
+    font-weight: bold;
+    color: #009900;
+}
+
+.board-style tr:nth-child(3) {
+    height: 25px;
+    font-size: 23px;
+    font-weight: bold;
+    color: #009900;
+}
+
+/* 第三名 */
+.rd-style {
+    height: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #952e0d;
+}
+
+.board-style tr:nth-child(4) {
+    height: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #952e0d;
+}

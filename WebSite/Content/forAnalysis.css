@@ -1,0 +1,31 @@
+﻿.btn {
+    color: #00cccc;
+    text-align: center;
+}
+
+.panel-group .btn:hover,
+.panel-group .btn:hover {
+    text-decoration: none;
+    color: #00cc00;
+}
+
+.record-style {
+    display: inline-block;
+    background-color: transparent;
+    margin-top: 80px;
+    padding: 30px 50px;
+    width: 40%;
+    float: left;
+    border: 1px solid #0099cc;
+}
+
+.record-style {
+    color: #003333;
+    font-size: 16px;
+}
+
+.chart-style {
+    display: inline-block;
+    border: 1px solid transparent;
+    float: left;
+}

@@ -4,17 +4,14 @@
     <tr>
         <td>
             <asp:Label ID="lblYear" runat="server" Text="西元年"></asp:Label>
-            &nbsp;
             <asp:DropDownList ID="dlYear" runat="server"></asp:DropDownList>
         </td>
         <td>
             <asp:Label ID="lblMonth" runat="server" Text="月"></asp:Label>
-            &nbsp;
             <asp:DropDownList ID="dlMonth" runat="server"></asp:DropDownList>
         </td>
         <td>
             <asp:Label ID="lblday" runat="server" Text="日"></asp:Label>
-            &nbsp;
             <asp:DropDownList ID="dlDay" runat="server"></asp:DropDownList>
         </td>
     </tr>

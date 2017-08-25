@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Linq">
+  <DataContextMoniker Name="/LinqDataContext" />
+  <nestedChildShapes>
+    <classShape Id="45344e42-a013-419a-baba-d7072a79d19f" absoluteBounds="3.375, 2.5, 2, 2.0916874186197916">
+      <DataClassMoniker Name="/LinqDataContext/bjuser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="220f69c9-7a42-4a9d-8963-b8176f455847" absoluteBounds="3.39, 2.96, 1.9700000000000002, 1.5316874186197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9db9d1a7-e380-4563-be4d-2e5571dfe0a6" absoluteBounds="0.625, 1.875, 2, 2.4612756347656251">
+      <DataClassMoniker Name="/LinqDataContext/personal_sport_menu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c1ce9d99-a123-499b-9ff2-c5274ddb47d8" absoluteBounds="0.64000000000000012, 2.335, 1.9700000000000002, 1.901275634765625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.375 : 3.34375); (2.625 : 3.34375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LinqDataContext/bjuser/bjuser_personal_sport_menu" />
+      <nodes>
+        <classShapeMoniker Id="45344e42-a013-419a-baba-d7072a79d19f" />
+        <classShapeMoniker Id="9db9d1a7-e380-4563-be4d-2e5571dfe0a6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="25703c2d-49ab-41bc-90bf-7059d6e98db5" absoluteBounds="3.125, 0.5, 2, 1.3525109863281251">
+      <DataClassMoniker Name="/LinqDataContext/SportType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="43968fc3-88af-43a8-9f9d-a22faec0f4fa" absoluteBounds="3.14, 0.96, 1.9700000000000002, 0.792510986328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.125 : 1.85251098632813); (2.95824916838988 : 1.86001110979188 : JumpStart); (2.79175083161012 : 1.86749987653625 : JumpEnd); (2.625 : 1.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/LinqDataContext/SportType/SportType_personal_sport_menu" />
+      <nodes>
+        <classShapeMoniker Id="25703c2d-49ab-41bc-90bf-7059d6e98db5" />
+        <classShapeMoniker Id="9db9d1a7-e380-4563-be4d-2e5571dfe0a6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="44cde3ad-b706-4b5e-869f-deecb163f6ca" absoluteBounds="0.5, 0.5, 2, 1.9068933105468751">
+      <DataClassMoniker Name="/LinqDataContext/setting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2c3a87e-4205-4ec9-b3a4-444b7eb10acc" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.346893310546875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.375 : 2.5); (4.375 : 2.10251098632813); (2.875 : 2.10251098632813); (2.875 : 1.1562505); (2.5 : 1.1562505)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LinqDataContext/bjuser/bjuser_setting" />
+      <nodes>
+        <classShapeMoniker Id="45344e42-a013-419a-baba-d7072a79d19f" />
+        <classShapeMoniker Id="44cde3ad-b706-4b5e-869f-deecb163f6ca" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9df1f2d2-891f-47df-b022-cd5b2a1ebaf2" absoluteBounds="2.75, 4.25, 2, 2.0916874186197916">
+      <DataClassMoniker Name="/LinqDataContext/user_health" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca8c51ee-bbe4-4ac6-9525-6443426fc595" absoluteBounds="2.765, 4.71, 1.9700000000000002, 1.5316874186197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.0625005 : 4.59168741861979); (5.0625005 : 5.46668791861979); (4.75 : 5.46668791861979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LinqDataContext/bjuser/bjuser_user_health" />
+      <nodes>
+        <classShapeMoniker Id="45344e42-a013-419a-baba-d7072a79d19f" />
+        <classShapeMoniker Id="9df1f2d2-891f-47df-b022-cd5b2a1ebaf2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
