@@ -1,11 +1,55 @@
-﻿
-.btn {
-    color: #00cccc;
+﻿/* go top */
+.div-fly {
+    right: 20px;
+    bottom: 20px;
+    width: 44px;
+    height: 44px;
+    float: right;
+    position: fixed;
+    opacity: 0.7;
+    background-color: #00cccc;
+    display: none;
     text-align: center;
+    line-height: 40px;
+    border-radius: 3px;
 }
 
+.game-btn {
+    font-weight: bold;
+    color: #ff3300;
+    text-align: center;
+    font-size: 16px;
+}
+.panel-group .game-btn:hover {
+    text-decoration: none;
+    color: #ffcc00;
+}
+
+.btn {
+    font-weight: bold;
+    color: #00cccc;
+    text-align: center;
+    font-size: 16px;
+}
+
+.btn-month {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #0099cc;
+    text-align: center;
+    font-size: 16px;
+}
+
+    .btn-month:hover {
+        text-decoration: none;
+    }
+
+    .btn-month:nth-child(1) {
+        margin-left: 20px;
+    }
+
 .panel-group .btn:hover,
-.panel-group .btn:hover {
+.panel-group .btn:focus {
     text-decoration: none;
     color: #00cc00;
 }
@@ -48,9 +92,6 @@
         width: 30%;
     }
 
-    .table-style td:nth-child(2) {
-    }
-
     .table-style tr {
         /*padding-left: 8px;*/
     }
@@ -70,6 +111,7 @@
     width: 100px;
     height: 100px;
     margin-bottom: 6px;
+    border: 1px dotted #0099cc;
 }
 
 /* 個人紀錄 */
@@ -137,14 +179,7 @@
 /* 第一名 */
 .st-style {
     height: 30px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #ffb616;
-}
-
-.board-style tr:nth-child(2) {
-    height: 30px;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     color: #ffb616;
 }
@@ -152,14 +187,7 @@
 /* 第二名 */
 .nd-style {
     height: 25px;
-    font-size: 23px;
-    font-weight: bold;
-    color: #009900;
-}
-
-.board-style tr:nth-child(3) {
-    height: 25px;
-    font-size: 23px;
+    font-size: 20px;
     font-weight: bold;
     color: #009900;
 }
@@ -167,14 +195,19 @@
 /* 第三名 */
 .rd-style {
     height: 20px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: #952e0d;
 }
 
-.board-style tr:nth-child(4) {
+/* 小圖示用Style */
+.icon-style {
+    width: 20px;
     height: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #952e0d;
+}
+
+.right-img {
+    max-width: 100%;
+    border: 1px solid transparent;
+    border-radius: 5px;
 }

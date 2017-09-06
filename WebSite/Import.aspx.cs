@@ -19,8 +19,19 @@ public partial class Import : System.Web.UI.Page
         txtImpReps.Enabled = false;
         txtImpSets.Enabled = false;
         txtImpTime.Enabled = false;
+        DLselectPond.Enabled = false;
+        if (!Page.IsPostBack)
+        {
+            DLselectPond.Items.Add("請選擇");
+            for (int i = 5; i <= 400; i += 5)
+            {
+                DLselectPond.Items.Add(i.ToString());
+            }
+            DLselectPond.Text = "請選擇";
+        }
+       
     }
-
+    
     protected void dlSelectSport_SelectedIndexChanged(object sender, EventArgs e)
     {
         divChange.Style.Add("background-image", "url('../image/import/" + dlSelectSport.SelectedIndex + ".png')");
@@ -35,40 +46,42 @@ public partial class Import : System.Web.UI.Page
             case 1:
             case 2:
             case 3:
-            case 4:
-            case 5:
-                txtImpReps.Enabled = true;
-                txtImpSets.Enabled = true;
-                break;
-            default:
                 txtImpDistance.Enabled = true;
                 txtImpTime.Enabled = true;
+                break;
+            default:
+                txtImpReps.Enabled = true;
+                txtImpSets.Enabled = true;
+                DLselectPond.Enabled = true;
                 break;
         }
     }
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        bjuser user = Session[Dictionary.SK_LOGGIN_User] as bjuser;
+        users user = Session[Dictionary.SK_LOGGIN_User] as users;
         int UserID = user.user_id;
 
         if (dlSelectSport.SelectedIndex != 0)
         {
-            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppString"].ConnectionString;
+            String connString = System.Configuration.ConfigurationManager.ConnectionStrings["BJwork"].ConnectionString;
             con = new SqlConnection(connString);
             con.Open();
             queryStr = "";
-            queryStr = "insert into personal_sport_menu (user_id, spdate, SportID, distance, reps, sets, times, finish) " +
-            "values (@user_id, @spdate, @SportID, @distance, @reps, @sets, @times, @finish)";
+            queryStr = "insert into pb (user_id, dates, sport_id, distance,sets,reps,times,pound,calories)values (@user_id,  GETDATE(),  @SportID, @distance,@sets,@reps, @times,@pound,0)";
             cmd = new SqlCommand(queryStr, con);
             cmd.Parameters.AddWithValue("@user_id", UserID);
-            cmd.Parameters.AddWithValue("@spdate", DateTime.Now.ToString("yyyy-MM-dd"));
             cmd.Parameters.AddWithValue("@SportID", dlSelectSport.SelectedIndex);
             cmd.Parameters.AddWithValue("@distance", txtImpDistance.Text);
+            cmd.Parameters.AddWithValue("@times", wbfCtrlSelectSportTimes.SelectTimes);
             cmd.Parameters.AddWithValue("@reps", txtImpReps.Text);
             cmd.Parameters.AddWithValue("@sets", txtImpSets.Text);
-            cmd.Parameters.AddWithValue("@times", wbfCtrlSelectSportTimes.SelectTimes);
-            cmd.Parameters.AddWithValue("@finish", 1);
+            int ponds = 0;
+            if (DLselectPond.Text == "請選擇")
+                ponds = 0;
+            else
+                ponds = Convert.ToInt32(DLselectPond.Text);
+            cmd.Parameters.AddWithValue("@pound",ponds);
             cmd.ExecuteNonQuery();
             con.Close();
 

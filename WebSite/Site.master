@@ -14,10 +14,9 @@
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <!--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />-->
-    <link href="image/flower_icon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="image/ico.ico" rel="shortcut icon" type="image/x-icon" />
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
-
+    
 </head>
 <body>
     <form runat="server">
@@ -42,59 +41,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <style type="text/css">
-            .ah-navbar-inverse {
-                /*background-color: #2db82d;*/
-                background-color: #0099cc;
-            }
-
-                .ah-navbar-inverse .navbar-brand {
-                    color: #d3f6d8;
-                }
-
-                    .ah-navbar-inverse .navbar-brand:hover,
-                    .ah-navbar-inverse .navbar-brand:focus {
-                        color: #ffffff;
-                        background-color: transparent;
-                    }
-
-                .ah-navbar-inverse .navbar-nav > li > a {
-                    color: #d3f6d8;
-                }
-
-                    .ah-navbar-inverse .navbar-nav > li > a:hover,
-                    .ah-navbar-inverse .navbar-nav > li > a:focus {
-                        color: #009900;
-                        background-color: #fffff0;
-                    }
-
-                .ah-navbar-inverse .navbar-collapse {
-                    border: none;
-                }
-
-                .ah-navbar-inverse .dropdown,
-                .ah-navbar-inverse .dropdown .caret {
-                    border-top-color: #ffffff;
-                    border-bottom-color: #ffffff;
-                }
-
-            .dropdown-menu > li > a {
-                color: #0099cc;
-            }
-
-                .dropdown-menu > li > a:hover {
-                    color: #d3f6d8;
-                    background-color: #0099cc;
-                }
-
-            .ah-navbar-inverse .navbar-toggle:hover {
-                background-color: transparent;
-            }
-
-            .ah-navbar-inverse .navbar-toggle .icon-bar {
-                background-color: #d3f6d8;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="../Content/forMaster.css" />
 
         <div class="navbar navbar-fixed-top ah-navbar-inverse">
             <div class="container">
@@ -120,37 +67,6 @@
                     });
                 </script>
 
-                <style type="text/css">
-                    .li-dropdown {
-                        position: relative;
-                        display: inline-block;
-                    }
-
-                    .li-dropdown-content {
-                        display: none;
-                        position: absolute;
-                        /*background-color: #f9f9f9;*/
-                        min-width: 160px;
-                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                        z-index: 1;
-                    }
-
-                        .li-dropdown-content a {
-                            /*color: black;*/
-                            /*padding: 12px 16px;*/
-                            text-decoration: none;
-                            display: block;
-                        }
-
-                    .li-dropdown:hover .li-dropdown-content {
-                        display: block;
-                    }
-
-                    ul {
-                        text-align: left;
-                    }
-                </style>
-
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
 
@@ -162,23 +78,11 @@
                         </li>
 
                         <li><a runat="server" href="~/Billboard">排行榜</a></li>
-                        <li><a runat="server" href="~/Information">健身資訊</a></li>
+                        <li><a runat="server" href="~/Information/main">健身資訊</a></li>
+                        <li><a runat="server" href="https://willhong.itch.io/webgame" target="_blank">Web Game</a></li>
 
                     </ul>
 
-                    <style type="text/css">
-                        .navbar-right .btn {
-                            margin-top: 11px;
-                            margin-right: 12px;
-                            background-color: transparent;
-                            border: none;
-                            color: #d3f6d8;
-                        }
-
-                            .navbar-right .btn:hover {
-                                color: #fff;
-                            }
-                    </style>
                     <div id="BeforeLogin" runat="server" visible="false" class="navbar-collapse collapse navbar-right" style="padding-left: 0px;">
                         <ul class="nav navbar-nav">
                             <li><a runat="server" href="~/Account/Register">註冊</a></li>
@@ -187,7 +91,7 @@
                     </div>
                     <div id="AfterLogin" runat="server" visible="false" class="navbar-collapse collapse navbar-right" style="padding-left: 0px;">
                         <ul class="nav navbar-nav">
-                            <li><a runat="server" href="~/Account/Personal" title="Manage your account">Hello, <%: (Session[Dictionary.SK_LOGGIN_User]as bjuser).u_name  %>&nbsp;!</a></li>
+                            <li><a runat="server" href="~/Account/Personal" title="Manage your account">Hello, <%: (Session[Dictionary.SK_LOGGIN_User]as users).u_name  %>&nbsp;!</a></li>
                             <li><a runat="server" href="~/Account/Logout">登出</a></li>
                         </ul>
                     </div>
@@ -196,16 +100,16 @@
             </div>
         </div>
 
-        <div class="container body-content">
-
+        <div class="container body-content" style="background-color: #fff;">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-
-            <hr />
-            <footer style="font-size: 10px;">
-                <p>&copy; <%: DateTime.Now.Year %> - BeJoin Workout, N.W.K.S.I</p>
-            </footer>
         </div>
     </form>
+    <hr />
+    <footer style="font-size: 12px;">
+        <div style="padding-top: 10px;" class="container">
+            <p>&copy; <%: DateTime.Now.Year %> - BeJoin Workout, N.W.K.S.I</p>
+        </div>
+    </footer>
 </body>
 </html>

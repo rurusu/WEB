@@ -13,132 +13,169 @@ public partial class Billboard : System.Web.UI.Page
     SqlCommand cmd;
     SqlDataReader reader;
     String queryStr;
+    int SportType;
+   
 
     protected void Page_Load(object sender, EventArgs e)
     {
         test.Visible = false;
         activeTab(btnWeeks, pnlWeeks);
-        lblTestMsg.Visible = false;
-        GetRank(1);
+        //lblTestMsg.Visible = false;
+
+        //btnSelectLastMonth.Text = DateTime.Now.ToString("yyyy/MM");
+        //btnSelectMonth.Text= DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddMonths(-1).ToString("yyyy/MM");
+        btnSelectMonth.Text = DateTime.Now.ToString("yyyy/MM");
+        btnSelectLastMonth.Text = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddMonths(-1).ToString("yyyy/MM");
+        string type = "手臂";
+        GetRank(4, type);
+        RightImg(4);
     }
 
     protected void btnTriceps_Click(object sender, EventArgs e)
     {
         lblTestMsg.Text = "手臂";
-        lblTestMsg.Visible = true;
-        int SportType = 1;
-        GetRank(SportType);
+        string type = lblTestMsg.Text;
+        SportType = 4;
+        GetRank(SportType, type);
+        RightImg(SportType);
+        lblTestMsg.Visible = false;
     }
  
     protected void btnBiceps_Click(object sender, EventArgs e)
     {
         lblTestMsg.Text = "肩部";
-        lblTestMsg.Visible = true;
-        int SportType = 2;
-        GetRank(SportType);
-
+        string type = lblTestMsg.Text;
+        SportType = 5;
+        GetRank(SportType, type);
+        RightImg(SportType);
+        lblTestMsg.Visible = false;
     }
 
     protected void btnBack_Click(object sender, EventArgs e)
     {
         lblTestMsg.Text = "背部";
-        lblTestMsg.Visible = true;       
-        int SportType = 3;
-        GetRank(SportType);
+        string type = lblTestMsg.Text;
+        SportType = 6;
+        GetRank(SportType, type);
+        RightImg(SportType);
+        lblTestMsg.Visible = false;
     }
 
     protected void btnShoulders_Click(object sender, EventArgs e)
     {
         lblTestMsg.Text = "胸部";
-        lblTestMsg.Visible = true;        
-        int SportType = 4;
-        GetRank(SportType);
+        string type = lblTestMsg.Text;
+        SportType = 7;
+        GetRank(SportType, type);
+        RightImg(SportType);
+        lblTestMsg.Visible = false;
     }
 
     protected void btnChest_Click(object sender, EventArgs e)
     {
         lblTestMsg.Text = "腿部";
-        lblTestMsg.Visible = true;        
-        int SportType = 5;
-        GetRank(SportType);
-
+        string type = lblTestMsg.Text;
+        SportType = 8;
+        GetRank(SportType, type);
+        RightImg(SportType);
+        lblTestMsg.Visible = false;
     }
 
-  /*  protected void btnForearms_Click(object sender, EventArgs e)
-    {
-        lblTestMsg.Text = "前臂";
-        lblTestMsg.Visible = true;
-        int SportType = 6;
-        GetRank(SportType);
-    }
-
-    protected void btnGlutes_Click(object sender, EventArgs e)
-    {
-        lblTestMsg.Text = "臀肌";
-        lblTestMsg.Visible = true;
-        int SportType = 7;
-        GetRank(SportType);
-    }
-
-    protected void btnAbs_Click(object sender, EventArgs e)
-    {
-        lblTestMsg.Text = "腹肌";
-        lblTestMsg.Visible = true;        
-        int SportType = 8;
-        GetRank(SportType);      
-    }
-    */
+  
     protected void btnWalking_Click(object sender, EventArgs e)
     {
         //SportID=9
         lblTestMsg.Text = "跑步";
-        lblTestMsg.Visible = true;        
-        int SportType = 9;
-        GetRank(SportType);
+        string type = lblTestMsg.Text;
+        SportType = 1;
+        GetRank(SportType, type);
+        RightImg(SportType);
+        lblTestMsg.Visible = false;
     }
 
     protected void btnRunning_Click(object sender, EventArgs e)
     {
         //sportid =10
         lblTestMsg.Text = "健走";
-        lblTestMsg.Visible = true;
-        int Sportype = 10;
-        GetRank(Sportype);
+        string type = lblTestMsg.Text;
+        SportType = 2;
+        GetRank(SportType, type);
+        RightImg(SportType);
+        lblTestMsg.Visible = false;
     }
 
     protected void btnCycling_Click(object sender, EventArgs e)
     {
+        
         lblTestMsg.Text = "單車";
-        lblTestMsg.Visible = true;
-        int SportType = 11;
-        GetRank(SportType);
+        string type = lblTestMsg.Text;
+        SportType = 3;
+        GetRank(SportType, type);
+        RightImg(SportType);
+        lblTestMsg.Visible = false;
+    }
+
+    protected void RightImg(int p)
+    {
+        switch (p)
+        {
+            case 1:
+                imgRight.Src = "../image/bills/outdoor-run.png";
+                break;
+            case 2:
+                imgRight.Src = "../image/bills/outdoor-hike.png";
+                break;
+            case 3:
+                imgRight.Src = "../image/bills/outdoor-bike.png";
+                break;
+            case 4:
+                imgRight.Src = "../image/bills/gym-arms.png";
+                break;
+            case 5:
+                imgRight.Src = "../image/bills/gym-shoulder.png";
+                break;
+            case 6:
+                imgRight.Src = "../image/bills/gym-back.png";
+                break;
+            case 7:
+                imgRight.Src = "../image/bills/gym-chest.png";
+                break;
+            case 8:
+                imgRight.Src = "../image/bills/gym-legs.png";
+                break;
+            default:
+                imgRight.Src = "~/image/bills/game.gif";
+                break;
+        }
     }
 
     /*方法*/
-    protected void GetRank(int SportType)
+    protected void GetRank(int SportType , string type)
     {
+        ClearGridview();
         if (Session[Dictionary.SK_LOGGIN_User] != null)
         {
             /*個人資料表*/
-            bjuser user = Session[Dictionary.SK_LOGGIN_User] as bjuser;
-            string Username = user.u_name;
-            int UserID = user.user_id;
-            string UserImg = user.u_photo;
+            users user = Session[Dictionary.SK_LOGGIN_User] as users;                       
 
-            imgPersonalPic.ImageUrl = UserImg;
-            lblBoardUserName.Text = Username;
+            imgPersonalPic.ImageUrl = user.u_photo;
+            lblBoardUserName.Text = user.u_name;
 
-            Personalinfo(UserID, SportType);
+            Personalinfo(user.user_id, SportType);
             /*周排行*/
-            WeekRank(SportType);
+            WeekRank(SportType,type);
         }
-        MonthRank(SportType);
+        MonthRank(SportType, type);
+        LastMonthRank(SportType, type);
+        PanelForBillboard.Visible = true;
     }
     
 
-    protected void MonthRank(int Sportype)
+    protected void MonthRank(int Sportype,string type)
     {
-        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppString"].ConnectionString;
+        string MonthHead = DateTime.Now.ToString("yyyy-MM-01");
+        string MonthTail= DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddMonths(1).AddDays(-1).ToString("yyyy-MM-dd");
+        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["BJwork"].ConnectionString;
         con = new SqlConnection(connString);
         con.Open();
         switch (Sportype)
@@ -146,30 +183,29 @@ public partial class Billboard : System.Web.UI.Page
             case 1:
             case 2:
             case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-                queryStr = "  select Rank() over(order by 運動量總計 desc) as 名次,使用者, 運動量總計 from ( select b.u_name as 使用者, sum(p.reps * p.sets) as 運動量總計  from personal_sport_menu  as p inner join bjuser as b on p.user_id = b.user_id  where spdate between '2017-7-1'and '2017-7-31' and  p.SportID = @Sporttype group by b.u_name ) a order by 名次";
+                queryStr = "select Rank() over(order by 健走距離 desc) as 名次,使用者, 健走距離 from ( select b.u_name as 使用者, sum(p.distance) as 健走距離 from pb as p inner join users as b on p.user_id = b.user_id where dates between @Head and @Tail and  p.sport_id = @SportType group by b.u_name ) a order by 名次";
                 break;
             default:
-                queryStr = "select Rank() over(order by 健走距離 desc) as 名次,使用者, 健走距離 from ( select b.u_name as 使用者, sum(p.distance) as 健走距離  from personal_sport_menu  as p inner join bjuser as b on p.user_id = b.user_id  where spdate between '2017-7-1'and '2017-7-31' and  p.SportID = 9 group by b.u_name ) a order by 名次";
+                queryStr = "  select Rank() over(order by 運動量總計 desc) as 名次,使用者, 運動量總計 from (select b.u_name as 使用者, sum(p.reps * p.sets) as 運動量總計  from pb  as p inner join users as b on p.user_id = b.user_id where dates between @Head and @Tail and  p.sport_id = @SportType group by b.u_name ) a order by 名次";
                 break;
+
         }
-        
+
         cmd = new SqlCommand(queryStr, con);
         cmd.Parameters.AddWithValue("@SportType", Sportype);
+        cmd.Parameters.AddWithValue("@Head", MonthHead);
+        cmd.Parameters.AddWithValue("@Tail", MonthTail);
         reader = cmd.ExecuteReader();
         gvMonths.DataSource = reader;
         gvMonths.DataBind();
         reader.Close();
         con.Close();
     }
-
-    protected void WeekRank(int Sportype)
+    protected  void LastMonthRank(int Sportype,string type)
     {
-        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppString"].ConnectionString;
+        string lastMonthHead = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddMonths(-1).ToString("yyyy-MM-01");
+        string lastMonthTail = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddDays(-1).ToString("yyyy-MM-dd");
+        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["BJwork"].ConnectionString;
         con = new SqlConnection(connString);
         con.Open();
         switch (Sportype)
@@ -177,45 +213,53 @@ public partial class Billboard : System.Web.UI.Page
             case 1:
             case 2:
             case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-                queryStr = "select Rank() over(order by 運動量總計 desc) as 名次, 使用者, 名稱, 運動量總計 from ( select b.u_photo as  使用者, b.u_name as 名稱, sum(p.reps * p.sets) as 運動量總計  from personal_sport_menu  as p inner join bjuser as b on p.user_id = b.user_id  where spdate between '2017-8-4'and '2017-8-11' and  p.SportID = @Sporttype group by b.u_name,b.u_photo ) a order by 名次";
+                queryStr = "select Rank() over(order by 健走距離 desc) as 名次,使用者, 健走距離 from ( select b.u_name as 使用者, sum(p.distance) as 健走距離 from pb as p inner join users as b on p.user_id = b.user_id where dates between @Head and @Tail and  p.sport_id = @SportType group by b.u_name ) a order by 名次";
                 break;
             default:
-                queryStr = "select Rank() over(order by 運動量總計 desc) as 名次, 使用者, 名稱, 運動量總計 from ( select b.u_photo as  使用者, b.u_name as 名稱, sum(p.distance) as 運動量總計  from personal_sport_menu  as p inner join bjuser as b on p.user_id = b.user_id  where spdate between '2017-7-4'and '2017-8-11' and  p.SportID =@Sporttype group by b.u_name,b.u_photo ) a order by 名次";
+                queryStr = "  select Rank() over(order by 運動量總計 desc) as 名次,使用者, 運動量總計 from (select b.u_name as 使用者, sum(p.reps * p.sets) as 運動量總計  from pb  as p inner join users as b on p.user_id = b.user_id where dates between @Head and @Tail and  p.sport_id = @SportType group by b.u_name ) a order by 名次";
+                break;
+
+        }
+
+        cmd = new SqlCommand(queryStr, con);
+        cmd.Parameters.AddWithValue("@SportType", Sportype);
+        cmd.Parameters.AddWithValue("@Head", lastMonthHead);
+        cmd.Parameters.AddWithValue("@Tail", lastMonthTail);
+        reader = cmd.ExecuteReader();
+        gvLastMonth.DataSource = reader;
+        gvLastMonth.DataBind();
+        reader.Close();
+        con.Close();
+
+    }
+    protected void WeekRank(int Sportype,string type)
+    {
+        String weekStart = DateTime.Now.AddDays(-7).ToString("yyyy-MM-dd");
+        String weekfinal = DateTime.Now.ToString("yyyy-MM-dd");
+        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["BJwork"].ConnectionString;
+        con = new SqlConnection(connString);
+        con.Open();
+        switch (Sportype)
+        {
+            case 1:
+            case 2:
+            case 3:
+                queryStr = "select Rank() over(order by 健走距離 desc) as 名次,使用者, 健走距離 from ( select b.u_name as 使用者, sum(p.distance) as 健走距離 from pb as p inner join users as b on p.user_id = b.user_id where dates between @weekHead and @weekTail  and  p.sport_id = @SportType group by b.u_name ) a order by 名次";
+                break;
+            default:
+                queryStr = "  select Rank() over(order by 運動量總計 desc) as 名次,使用者, 運動量總計 from (select b.u_name as 使用者, sum(p.reps * p.sets) as 運動量總計  from pb  as p inner join users as b on p.user_id = b.user_id where dates between @weekHead and @weekTail and  p.sport_id = @SportType group by b.u_name ) a order by 名次";
                 break;
         }
 
         cmd = new SqlCommand(queryStr, con);
         cmd.Parameters.AddWithValue("@Sporttype", Sportype);
+        cmd.Parameters.AddWithValue("@weekHead", weekStart);
+        cmd.Parameters.AddWithValue("@weekTail", weekfinal);
         reader = cmd.ExecuteReader();
-        /*  Response.Write("<table Class=\"board - style table table - style\" id=\"testable\"><tr>");
-          for(int i = 0; i < reader.FieldCount; i++)        
-              Response.Write("<td>" + reader.GetName(i) + "</td>");        
-          Response.Write("</tr>");*/
-
-        /*    while ( reader.Read())
-            {
-                Response.Write("<tr>");
-                for(int i = 0; i < reader.FieldCount; i+=4)
-                {
-                    Response.Write("<td>" + reader[i].ToString() + "</td>");
-                    Response.Write("<td><asp:Image   ImageUrl='" + reader[i+1].ToString() + "' /></td>");
-                    Response.Write("<td>" + reader[i+2].ToString() + "</td>");
-                    Response.Write("<td>" + reader[i+3].ToString() + "</td>");
-                }*/
-
-        /* runat=\"server\"*/
-        //  Response.Write("</tr>");            
-        /*  gvWeeks.DataSource = reader;
-          gvWeeks.DataBind();*/
-        //     }
-        //   Response.Write("</table>");
+        
         if (reader.HasRows)
         {
+            lblShowWeek.Text = type;
             gvWeeks.DataSource = reader;
             gvWeeks.DataBind();
         }
@@ -231,7 +275,7 @@ public partial class Billboard : System.Web.UI.Page
 
     protected void Personalinfo(int userid, int Sportype)
     {
-        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppString"].ConnectionString;
+        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["BJwork"].ConnectionString;
         con = new SqlConnection(connString);
         con.Open();
         queryStr = "";
@@ -240,16 +284,11 @@ public partial class Billboard : System.Web.UI.Page
             case 1:
             case 2:
             case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-                queryStr = " Select spdate 運動日期,reps * sets 運動量,times 運動時間 from personal_sport_menu where user_id = @userid and SportID=@SportID ";
+                queryStr = " Select convert(varchar,dates,111) as 運動日期,distance 運動距離,times 運動時間 from pb where user_id = @userid and sport_id=@SportID";
                 break;
             default:
-                queryStr = "Select spdate 運動日期,distance 運動距離,times 運動時間 from personal_sport_menu where user_id = @userid and SportID=@SportID";
-                break;
+                queryStr = " select convert(varchar,dates,111) as 運動日期 , (sets*reps) 運動量 , pound as 磅數, times 運動時間 from pb where user_id=@userid and sport_id =@SportID";
+                break;            
         }
 
         cmd = new SqlCommand(queryStr, con);
@@ -258,18 +297,13 @@ public partial class Billboard : System.Web.UI.Page
         reader = cmd.ExecuteReader();
        if (reader.HasRows)
         {
+            
+            
             gvPersonal.DataSource = reader;
             gvPersonal.DataBind();
             gvPersonal.Visible = true;
-           lblshow.Visible = false;
+         
         }
-        else
-        {
-            lblshow.Text = "您還沒有進行這項運動喔!";
-            lblshow.Visible = true;
-        }
-       
-
         reader.Close();
         con.Close();
     }
@@ -277,13 +311,15 @@ public partial class Billboard : System.Web.UI.Page
     /*click事件*/
     protected void btnMonths_Click(object sender, EventArgs e)
     {
-        lblTestMsg.Visible = true;
+        //lblTestMsg.Visible = true;
+        
         activeTab(btnMonths, pnlMonths);
     }
 
     protected void btnWeeks_Click(object sender, EventArgs e)
     {
-        lblTestMsg.Visible = true;
+        //lblTestMsg.Visible = true;
+        
         activeTab(btnWeeks, pnlWeeks);
     }
 
@@ -302,21 +338,98 @@ public partial class Billboard : System.Web.UI.Page
 
     protected void btnSelectMonth_Click(object sender, EventArgs e)
     {
-        if (Session["uname"] != null)
-        {
-
-        }
+        activeTab(btnMonths, pnlMonths);
+        gvMonths.Visible = true;
+        gvLastMonth.Visible = false;
     }
 
     protected void btnSelectWeek_Click(object sender, EventArgs e)
     {
-        if (Session["uname"] != null)
-        {
-
-        }
+        
     }
 
     protected void gvMonths_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            if (e.Row.Cells[0].Text == "1")
+            {
+                e.Row.CssClass = "st-style";
+            }
+            else if (e.Row.Cells[0].Text == "2")
+            {
+                e.Row.CssClass = "nd-style";
+            }
+            else if (e.Row.Cells[0].Text == "3")
+            {
+                e.Row.CssClass = "rd-style";
+            }
+        }
+    }
+
+    protected void gvWeeks_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            if (e.Row.Cells[0].Text == "1")
+            {
+                e.Row.CssClass = "st-style";
+            }
+            else if (e.Row.Cells[0].Text == "2")
+            {
+                e.Row.CssClass = "nd-style";
+            }
+            else if (e.Row.Cells[0].Text == "3")
+            {
+                e.Row.CssClass = "rd-style";
+            }
+        }
+    }
+
+    protected void btnSelectLastMonth_Click(object sender, EventArgs e)
+    {
+        activeTab(btnMonths, pnlMonths);
+        gvLastMonth.Visible = true;
+        gvMonths.Visible = false;
+    }
+
+    protected void btnIOSGame_Click(object sender, EventArgs e)
+    {
+        PanelForBillboard.Visible = false;
+        iosgame();
+        SportType = 9;
+        RightImg(SportType);
+    }
+
+    protected void iosgame()
+    {
+        String connString = System.Configuration.ConfigurationManager.ConnectionStrings["BJwork"].ConnectionString;
+        con = new SqlConnection(connString);
+        con.Open();
+        queryStr = "";
+        queryStr = "select Top(10) Rank() over(order by 勝場數 desc) as 名次, 玩家,勝場數 from (select u_name as 玩家,u_win as 勝場數 from users)a order by 1";
+        cmd = new SqlCommand(queryStr, con);
+        reader = cmd.ExecuteReader();
+        gvPersonal.DataSource = reader;
+        gvPersonal.DataBind();
+        reader.Close();
+        con.Close();
+    }
+
+    protected void ClearGridview()
+    {
+        gvLastMonth.DataSource = null;
+        gvLastMonth.DataBind();
+        gvMonths.DataSource = null;
+        gvMonths.DataBind();
+        gvPersonal.DataSource = null;
+        gvPersonal.DataBind();
+        gvWeeks.DataSource = null;
+        gvWeeks.DataBind();
+
+    }
+
+    protected void gvPersonal_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow)
         {

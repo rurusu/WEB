@@ -5,16 +5,16 @@
     <script type="text/javascript" src="Scripts/div_goTop.js"></script>
     <script type="text/javascript" src="Scripts/modernizr.custom.86080.js"></script>
     <link rel="stylesheet" type="text/css" href="Content/demo.css" />
-    <link rel="stylesheet" type="text/css" href="Content/style1.css" />
+    <link rel="stylesheet" type="text/css" href="Content/Background.css" />
 
     <style type="text/css">
         /* QR */
         .div-qr {
-            left: 50px;
+            right: 150px;
             bottom: 50px;
             width: 80px;
             height: auto;
-            float: left;
+            float: right;
             position: fixed;
             border-radius: 5px;
         }
@@ -67,6 +67,7 @@
             max-width: 100%;
             padding: 30px;
         }
+
     </style>
 
     <ul class="cb-slideshow">
@@ -104,7 +105,7 @@
 
     <!-- QR -->
     <div class="div-qr">
-        <img src="image/qrTest.png" style="width: 170px; height: auto;" />
+        <img src="image/qrTest.png" style="width: 170px; height: auto; border: 2px solid #0099cc;" />
     </div>
 
 </asp:Content>

@@ -1,0 +1,8 @@
+﻿.col-sm-6 {
+    background-image: url('../image/import/1.png');
+    background-size: 250px;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position-x: right;
+    background-position-y: bottom;
+}

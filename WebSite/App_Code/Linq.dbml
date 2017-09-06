@@ -1,63 +1,57 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SuruTest" Class="LinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=bjwork95.cjng4ulqqzae.ap-northeast-1.rds.amazonaws.com;Initial Catalog=SuruTest;Persist Security Info=True;User ID=BJwork" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SuruTestConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.bjuser" Member="bjuser">
-    <Type Name="bjuser">
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="u_photo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="u_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="u_password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="u_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="u_birth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="u_gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="bjuser_personal_sport_menu" Member="personal_sport_menu" ThisKey="user_id" OtherKey="user_id" Type="personal_sport_menu" />
-      <Association Name="bjuser_setting" Member="setting" ThisKey="user_id" OtherKey="user_id" Type="setting" Cardinality="One" />
-      <Association Name="bjuser_user_health" Member="user_health" ThisKey="user_id" OtherKey="user_id" Type="user_health" />
-    </Type>
-  </Table>
-  <Table Name="dbo.personal_sport_menu" Member="personal_sport_menu">
-    <Type Name="personal_sport_menu">
-      <Column Name="p_menu_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="spdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="SportID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BJWORK95" Class="LinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=bjwork95.cjng4ulqqzae.ap-northeast-1.rds.amazonaws.com;Initial Catalog=BJWORK95;Persist Security Info=True;User ID=BJwork" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BJWORK95ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.pb" Member="pb">
+    <Type Name="pb">
+      <Column Name="pbnum" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sport_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="distance" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="reps" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="sets" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="times" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="finish" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="bjuser_personal_sport_menu" Member="bjuser" ThisKey="user_id" OtherKey="user_id" Type="bjuser" IsForeignKey="true" />
-      <Association Name="SportType_personal_sport_menu" Member="SportType" ThisKey="SportID" OtherKey="SportID" Type="SportType" IsForeignKey="true" />
+      <Column Name="reps" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="times" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="calories" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="dates" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="pound" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="users_pb" Member="users" ThisKey="user_id" OtherKey="user_id" Type="users" IsForeignKey="true" />
+      <Association Name="sport_type_pb" Member="sport_type" ThisKey="sport_id" OtherKey="sport_id" Type="sport_type" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.SportType" Member="SportType">
-    <Type Name="SportType">
-      <Column Name="SportID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SportName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="SportType_personal_sport_menu" Member="personal_sport_menu" ThisKey="SportID" OtherKey="SportID" Type="personal_sport_menu" />
-    </Type>
-  </Table>
-  <Table Name="dbo.setting" Member="setting">
-    <Type Name="setting">
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="drink" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="fight" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="inspire" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="drink_liter" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
-      <Column Name="BMR" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
-      <Association Name="bjuser_setting" Member="bjuser" ThisKey="user_id" OtherKey="user_id" Type="bjuser" IsForeignKey="true" />
+  <Table Name="dbo.users" Member="users">
+    <Type Name="users">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="u_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="u_photo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="u_password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="u_email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="u_birth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="u_sex" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="u_atk" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="u_win" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="users_pb" Member="pb" ThisKey="user_id" OtherKey="user_id" Type="pb" />
+      <Association Name="users_user_health" Member="user_health" ThisKey="user_id" OtherKey="user_id" Type="user_health" />
     </Type>
   </Table>
   <Table Name="dbo.user_health" Member="user_health">
     <Type Name="user_health">
-      <Column Name="health_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="u_gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="user_health_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="height" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="weight" Type="System.Decimal" DbType="Decimal(18,1)" CanBeNull="true" />
+      <Column Name="dates" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BMI" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="BMR" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="drink_liter" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
       <Column Name="age" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="height" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="insert_date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="bjuser_user_health" Member="bjuser" ThisKey="user_id" OtherKey="user_id" Type="bjuser" IsForeignKey="true" />
+      <Association Name="users_user_health" Member="users" ThisKey="user_id" OtherKey="user_id" Type="users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.sport_type" Member="sport_type">
+    <Type Name="sport_type">
+      <Column Name="type_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="sport_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sport_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="sport_photo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="sport_type_pb" Member="pb" ThisKey="sport_id" OtherKey="sport_id" Type="pb" />
     </Type>
   </Table>
 </Database>

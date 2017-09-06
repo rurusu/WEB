@@ -1,6 +1,24 @@
-﻿.btn {
+﻿/* go top */
+.div-fly {
+    right: 20px;
+    bottom: 20px;
+    width: 44px;
+    height: 44px;
+    float: right;
+    position: fixed;
+    opacity: 0.7;
+    background-color: #00cccc;
+    display: none;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 3px;
+}
+
+.btn {
+    font-weight: bold;
     color: #00cccc;
     text-align: center;
+    font-size: 16px;
 }
 
 .panel-group .btn:hover,
@@ -25,7 +43,41 @@
 }
 
 .chart-style {
-    display: inline-block;
-    border: 1px solid transparent;
+    display: block;
+    /*border: 1px solid #666;*/
+    width: 200px;
     float: left;
+}
+.chart-style2 {
+    display: block;
+    /*border: 1px solid #666;*/
+    width: 150px;
+    margin: 0 300px;
+    padding-top: 20px;
+}
+
+/* 小圖示用Style */
+.icon-style {
+    width: 20px;
+    height: 20px;
+}
+
+.panel {
+    border: none;
+}
+
+.panel-title a {
+    color: #fff;
+    font-size: 18px;
+}
+
+    .panel-title a:hover,
+    .panel-title a:focus {
+        color: #fff;
+        text-decoration: none;
+    }
+
+.panel-body {
+    /*border-bottom: 4px solid #00cccc;*/
+    border: none;
 }

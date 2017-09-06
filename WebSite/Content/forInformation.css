@@ -1,0 +1,139 @@
+﻿/* go top */
+.div-fly {
+    right: 20px;
+    bottom: 20px;
+    width: 44px;
+    height: 44px;
+    float: right;
+    position: fixed;
+    opacity: 0.7;
+    background-color: #00cccc;
+    display: none;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 3px;
+}
+
+.table-set {
+    height: 500px;
+}
+
+.tb {
+    background-image: url('../image/information0.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center;
+}
+
+.sticky {
+    display: block;
+    top: 75px;
+    position: fixed;
+}
+
+.sticky {
+    color: #b8b8b8;
+    background-color: #fff;
+    font-size: 20px;
+}
+
+.btn {
+    font-weight: bold;
+    color: #00cccc;
+    text-align: center;
+    font-size: 16px;
+}
+
+.panel-group .btn:hover,
+.panel-group .btn:hover {
+    text-decoration: none;
+    color: #00cc00;
+}
+
+.sport-btn {
+    color: #fff;
+    background: #00cccc;
+    font-size: 16px;
+    border-radius: 5px;
+}
+/*
+    .sport-btn:hover {
+        color: #00cc00;
+        background-color: transparent;
+        text-decoration: none;
+        border: 1px solid #00cccc;
+    }
+*/
+
+.btn-left {
+    margin-left: 100px;
+}
+
+.btn-img {
+    width: 80px;
+    height: 80px;
+    padding: 8px;
+}
+
+    /* Tooltip的CSS */
+    .btn-img + .tooltip > .tooltip-inner {
+        background-color: #fff;
+        color: #888;
+        font-size: 14px;
+        border: 1px solid #00cc00;
+    }
+
+.btn-link + .tooltip > .tooltip-inner {
+    background-color: #fff;
+    color: #888;
+    font-size: 14px;
+    border: 1px solid #00cc00;
+}
+
+/* 小圖示用Style */
+.icon-style {
+    width: 20px;
+    height: 20px;
+    margin: 0px 4px;
+}
+
+h5 {
+    color: #0099cc;
+}
+
+.panel {
+    border: none;
+}
+
+.panel-body p {
+    font-size: 14px;
+}
+
+.panel-title a {
+    color: #fff;
+    font-size: 16px;
+}
+
+    .panel-title a:hover,
+    .panel-title a:focus {
+        color: #fff;
+        text-decoration: none;
+    }
+
+.panel-body {
+    border-bottom: 4px solid #00cccc;
+}
+
+    .panel-body strong,
+    .panel-body p {
+        font-size: 16px;
+    }
+
+.right-img {
+    width: 300px;
+    margin-top: 140px;
+    margin-left: -100px;
+    opacity: 0.7;
+}
+
+/* .sport-btn:nth-child(1) */

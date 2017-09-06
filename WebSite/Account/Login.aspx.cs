@@ -30,7 +30,7 @@ public partial class Account_Login : Page
     {
         
         LinqDataContext lqdb = new LinqDataContext();
-        bjuser user = lqdb.bjuser.FirstOrDefault(m => m.u_email.Equals(Email.Text) && m.u_password.Equals(Password.Text));
+        users user = lqdb.users.FirstOrDefault(m => m.u_email.Equals(Email.Text) && m.u_password.Equals(Password.Text));
         if (user != null)
         {
             Session[Dictionary.SK_LOGGIN_User] = user;

@@ -4,6 +4,10 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <style type="text/css">
+        .row {
+            height: 585px;
+        }
+
         .txt {
             font-size: 12px;
             color: #999999;
@@ -49,9 +53,9 @@
     <div class="row" style="margin-top: 20px;">
         <div class="col-xs-12">
 
-            <table class="table-style">
+            <table class="table-style" style="margin: 0px auto;">
                 <tr>
-                    <td rowspan="5" style="width: 175px; vertical-align: top; text-align: center;">
+                    <td rowspan="5" style="width: 175px; vertical-align: top; text-align: center; color: #0099cc;">
                         <h4>登入</h4>
                     </td>
                 </tr>

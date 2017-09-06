@@ -1,8 +1,15 @@
 ﻿<%@ Page Title="個人主頁" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Personal.aspx.cs" Inherits="Account_Personal" %>
 
+<%@ Register src="WUCtlHeight.ascx" tagname="WUCtlHeight" tagprefix="uc1" %>
+<%@ Register src="WUCtlWeight.ascx" tagname="WUCtlWeight" tagprefix="uc2" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <style type="text/css">
+        .row {
+            height: 585px;
+        }
+
         .txt {
             font-size: 12px;
             color: #999999;
@@ -41,20 +48,32 @@
         .image-style {
             width: 100px;
             height: 100px;
-            margin-bottom: 6px;
+            border: 1px dotted #0099cc;
+        }
+
+        .img {
+            margin-top: 18px;
         }
 
         .panel-style {
             margin: 0px auto;
         }
+
+        .lbl {
+            margin-left: 15px;
+        }
+
+        .user-lbl {
+            color: #009900;
+            font-size: 16px;
+        }
     </style>
-    <div>
+    <div class="row">
         <asp:Panel runat="server" ID="PersonPanel">
             <asp:Button runat="server" ID="btnPersonal" Text="個人資料" CssClass="btn btn-link" OnClick="btnPersonal_Click" />
             <asp:Button runat="server" ID="btnSetPasswd" Text="更改密碼" CssClass="btn btn-link" OnClick="btnSetPasswd_Click" />
             <asp:Button runat="server" ID="btnSetProfit" Text="更改資料" CssClass="btn btn-link" OnClick="btnSetProfit_Click" />
-            <asp:Button runat="server" ID="btnSetAlert" Text="提醒設定" CssClass="btn btn-link" OnClick="btnSetAlert_Click" />
-            
+
             <script type="text/javascript">
                 $(function () {
                     function preview(input) {
@@ -71,94 +90,98 @@
                     })
                 })
             </script>
-            
+
             <!-- 顯示個人資料 -->
             <asp:Panel runat="server" ID="pnlPersonal" CssClass="panel panel-style">
 
-                <div style="margin: 5px auto;">
-                    <table class="table-style" style="margin: 0px 10px; display: inline-block; vertical-align: top;">
-                        <tr style="text-align: center;">
-                            <td colspan="3" style="border-bottom: 1px solid #cccccc">
-                                <p style="font-size: 14px;"><strong>個人基本資訊</strong></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td rowspan="4" style="width: 175px; text-align: center;">
-                                <asp:Image runat="server" ID="imgAvatar" CssClass="image-style" />
-                            </td>
-                        </tr>
-                        <tr style="">
-                            <td style="width: 116px; height: 55px; vertical-align: middle;">
-                                <asp:Label runat="server">用戶名稱</asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label runat="server" ID="lblUserName">UserName</asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="height: 55px; vertical-align: middle;">
-                                <asp:Label runat="server">用戶信箱</asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label runat="server" ID="lblUserEmail">UserEmail</asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="height: 55px; vertical-align: middle;">年齡</td>
-                            <td>
-                                <asp:Label runat="server" ID="lblYearsOld">YearsOld</asp:Label>
-                            </td>
-                        </tr>
-                    </table>
+                <table class="table-style" style="margin: 0px auto;">
+                    <tr>
+                        <td colspan="3" style="color: #0099cc; text-align: center;">
+                            <h4>個人基本資訊</h4>
+                        </td>
 
-                    <table class="table-style" style="display: inline-block; margin: 0px 10px;">
-                        <tr style="text-align: center;">
-                            <td colspan="3" style="border-bottom: 1px solid #cccccc">
-                                <p style="font-size: 14px;"><strong>個人健康資訊</strong></p>
-                            </td>
-                        </tr>
-                        <tr style="">
-                            <td style="height: 55px; vertical-align: middle;">
-                                <asp:Label runat="server">身高</asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label runat="server" ID="lblUserHeight">UserHeight</asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 75px; height: 55px; vertical-align: middle;">
-                                <asp:Label runat="server">體重</asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label runat="server" ID="lblUserWeight">UserWeight</asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="height: 55px; vertical-align: middle;">
-                                <asp:Label runat="server">BMI值</asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label runat="server" ID="lblUserBMI">UserBMI</asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="height: 55px; vertical-align: middle;">
-                                <asp:Label runat="server">每日喝水量</asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label runat="server" ID="lblUserDrinking">UserDrinking</asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 116px; height: 55px; vertical-align: middle;">
-                                <asp:Label runat="server">每日基礎代謝量</asp:Label>
-                            </td>
-                            <td>
-                                <asp:Label runat="server" ID="lblUserMeta">UserMeta</asp:Label>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                        <td colspan="2" style="color: #0099cc; padding-left: 20px;">
+                            <h4>個人健康資訊</h4>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td rowspan="12" style="width: 175px; text-align: center; vertical-align: top;">
+                            <asp:Image runat="server" ID="imgAvatar" CssClass="img image-style" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 116px; height: 55px; vertical-align: middle;">
+                            <asp:Label runat="server">用戶名稱</asp:Label>
+                        </td>
+                        <td style="width: 180px;">
+                            <asp:Label runat="server" ID="lblUserName" CssClass="user-lbl">UserName</asp:Label>
+                        </td>
+
+                        <td style="width: 150px; height: 55px; vertical-align: middle;">
+                            <asp:Label runat="server" CssClass="lbl">身高</asp:Label>
+                        </td>
+                        <td style="width: 180px;">
+                            <asp:Label runat="server" ID="lblUserHeight" CssClass="user-lbl">UserHeight</asp:Label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="width: 75px; height: 55px; vertical-align: middle;">
+                            <asp:Label runat="server">用戶信箱</asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="lblUserEmail" CssClass="user-lbl">UserEmail</asp:Label>
+                        </td>
+
+                        <td style="height: 55px; vertical-align: middle; padding-left: 3px;">
+                            <asp:Label runat="server" CssClass="lbl">體重</asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="lblUserWeight" CssClass="user-lbl">UserWeight</asp:Label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="height: 55px; vertical-align: middle; padding-left: 3px;">年齡</td>
+                        <td>
+                            <asp:Label runat="server" ID="lblYearsOld" CssClass="user-lbl">YearsOld</asp:Label>
+                        </td>
+
+                        <td style="height: 55px; vertical-align: middle; padding-left: 3px;">
+                            <asp:Label runat="server" CssClass="lbl">BMI值</asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="lblUserBMI" CssClass="user-lbl">UserBMI</asp:Label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="height: 55px; vertical-align: middle;"></td>
+                        <td></td>
+
+                        <td style="height: 55px; vertical-align: middle; padding-left: 3px;">
+                            <asp:Label runat="server" CssClass="lbl">每日喝水量</asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="lblUserDrinking" CssClass="user-lbl">UserDrinking</asp:Label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="height: 55px; vertical-align: middle;"></td>
+                        <td></td>
+
+                        <td style="height: 55px; vertical-align: middle; padding-left: 3px;">
+                            <asp:Label runat="server" CssClass="lbl">每日基礎代謝量</asp:Label>
+                        </td>
+                        <td>
+                            <asp:Label runat="server" ID="lblUserMeta" CssClass="user-lbl">UserMeta</asp:Label>
+                        </td>
+
+                    </tr>
+                </table>
+
             </asp:Panel>
 
             <!-- 變更密碼 -->
@@ -222,10 +245,6 @@
                     <tr>
                         <td colspan="2">
                             <asp:Image runat="server" ID="imgAvatarPreview" CssClass="image-style imgShow" />
-                            <!--
-                            <asp:TextBox runat="server" ID="txtAvatarPath" ReadOnly="true">上傳檔案路徑</asp:TextBox>
-                            <asp:Button runat="server" ID="btnUpload" Text="上傳檔案" OnClick="btnUpload_Click" />
-                            -->
                             <asp:FileUpload runat="server" ID="fupAvatar" CssClass="fupAvatar" />
 
                             <asp:Label runat="server" ID="lblAvatar" CssClass="lable-style">僅限100x100大小的.jpg或.png檔</asp:Label>
@@ -258,12 +277,15 @@
                         </td>
                     </tr>
                     <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
                         <td style="width: 90px;">
                             <asp:Label runat="server">身高</asp:Label>
                         </td>
-                        <td>
-                            <asp:TextBox ID="txtSetHeight" runat="server" CssClass="txt"></asp:TextBox>
-                            &nbsp;<asp:Label ID="lblChexkHeight" runat="server" Style="font-size: medium; color: #C7254E; font-family: 微軟正黑體" Text="身高必須要輸入" Visible="false"></asp:Label>
+                        <td style="width: 200px;">
+                            <uc1:WUCtlHeight ID="WUCtlHeight" runat="server" />
+                            <asp:Label ID="lblChexkHeight" runat="server" style="font-size: medium; color: #C7254E; font-family: 微軟正黑體" Text="身高必須要輸入" Visible="false"></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -271,8 +293,8 @@
                             <asp:Label runat="server">體重</asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="txtSetWeight" runat="server" CssClass="txt"></asp:TextBox>
-                            <asp:Label ID="lblChexkWeight" runat="server" Style="font-size: medium; color: #C7254E; font-family: 微軟正黑體" Text="體重必須要輸入" Visible="false"></asp:Label>
+                            <uc2:WUCtlWeight ID="WUCtlWeight" runat="server" />
+                            <asp:Label ID="lblChexkWeight" runat="server" style="font-size: medium; color: #C7254E; font-family: 微軟正黑體" Text="體重必須要輸入" Visible="false"></asp:Label>
                         </td>
                     </tr>
 

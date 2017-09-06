@@ -22,16 +22,16 @@ public partial class Account_Register : Page
         if(RequiredEmail.IsValid&& RegularEmail.IsValid)
         {
             LinqDataContext lqdb = new LinqDataContext();
-            bjuser user = lqdb.bjuser.FirstOrDefault(m => m.u_email.Equals(txtEmail.Text));
+            users user = lqdb.users.FirstOrDefault(m => m.u_email.Equals(txtEmail.Text));
             if(user == null)
             {
                 if (RequiredCode.IsValid && RequiredFieldValidator1.IsValid && CompareCode.IsValid && RequiredCode.IsValid)
                 {
-                    String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppString"].ConnectionString;
+                    String connString = System.Configuration.ConfigurationManager.ConnectionStrings["BJwork"].ConnectionString;
                     con = new SqlConnection(connString);
                     con.Open();
                     queryStr = "";
-                    queryStr = "insert into bjuser (u_photo, u_name, u_birth, u_password, u_email, u_gender) values (@photo, @username, @Birth, @passwd, @Email, @Gender)";
+                    queryStr = "insert into users (u_name,u_photo,u_password,u_email,u_birth,u_sex) values (@username, @photo, @passwd, @Email, @Birth, @Gender)";
                     cmd = new SqlCommand(queryStr, con);
                     cmd.Parameters.AddWithValue("@photo", "~/photo/default.png");
                     cmd.Parameters.AddWithValue("@username", txtName.Text);

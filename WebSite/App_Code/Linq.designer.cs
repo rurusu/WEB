@@ -21,7 +21,7 @@ using System.Reflection;
 
 
 
-[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="SuruTest")]
+[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BJWORK95")]
 public partial class LinqDataContext : System.Data.Linq.DataContext
 {
 	
@@ -29,25 +29,22 @@ public partial class LinqDataContext : System.Data.Linq.DataContext
 	
   #region 擴充性方法定義
   partial void OnCreated();
-  partial void Insertbjuser(bjuser instance);
-  partial void Updatebjuser(bjuser instance);
-  partial void Deletebjuser(bjuser instance);
-  partial void Insertpersonal_sport_menu(personal_sport_menu instance);
-  partial void Updatepersonal_sport_menu(personal_sport_menu instance);
-  partial void Deletepersonal_sport_menu(personal_sport_menu instance);
-  partial void InsertSportType(SportType instance);
-  partial void UpdateSportType(SportType instance);
-  partial void DeleteSportType(SportType instance);
-  partial void Insertsetting(setting instance);
-  partial void Updatesetting(setting instance);
-  partial void Deletesetting(setting instance);
+  partial void Insertpb(pb instance);
+  partial void Updatepb(pb instance);
+  partial void Deletepb(pb instance);
+  partial void Insertusers(users instance);
+  partial void Updateusers(users instance);
+  partial void Deleteusers(users instance);
   partial void Insertuser_health(user_health instance);
   partial void Updateuser_health(user_health instance);
   partial void Deleteuser_health(user_health instance);
+  partial void Insertsport_type(sport_type instance);
+  partial void Updatesport_type(sport_type instance);
+  partial void Deletesport_type(sport_type instance);
   #endregion
 	
 	public LinqDataContext() : 
-			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["SuruTestConnectionString"].ConnectionString, mappingSource)
+			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BJWORK95ConnectionString"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
@@ -76,35 +73,19 @@ public partial class LinqDataContext : System.Data.Linq.DataContext
 		OnCreated();
 	}
 	
-	public System.Data.Linq.Table<bjuser> bjuser
+	public System.Data.Linq.Table<pb> pb
 	{
 		get
 		{
-			return this.GetTable<bjuser>();
+			return this.GetTable<pb>();
 		}
 	}
 	
-	public System.Data.Linq.Table<personal_sport_menu> personal_sport_menu
+	public System.Data.Linq.Table<users> users
 	{
 		get
 		{
-			return this.GetTable<personal_sport_menu>();
-		}
-	}
-	
-	public System.Data.Linq.Table<SportType> SportType
-	{
-		get
-		{
-			return this.GetTable<SportType>();
-		}
-	}
-	
-	public System.Data.Linq.Table<setting> setting
-	{
-		get
-		{
-			return this.GetTable<setting>();
+			return this.GetTable<users>();
 		}
 	}
 	
@@ -115,19 +96,387 @@ public partial class LinqDataContext : System.Data.Linq.DataContext
 			return this.GetTable<user_health>();
 		}
 	}
+	
+	public System.Data.Linq.Table<sport_type> sport_type
+	{
+		get
+		{
+			return this.GetTable<sport_type>();
+		}
+	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.bjuser")]
-public partial class bjuser : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.pb")]
+public partial class pb : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _pbnum;
+	
+	private int _user_id;
+	
+	private int _sport_id;
+	
+	private System.Nullable<double> _distance;
+	
+	private System.Nullable<int> _sets;
+	
+	private System.Nullable<int> _reps;
+	
+	private string _times;
+	
+	private System.Nullable<double> _calories;
+	
+	private System.DateTime _dates;
+	
+	private System.Nullable<int> _pound;
+	
+	private EntityRef<users> _users;
+	
+	private EntityRef<sport_type> _sport_type;
+	
+    #region 擴充性方法定義
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnpbnumChanging(int value);
+    partial void OnpbnumChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void Onsport_idChanging(int value);
+    partial void Onsport_idChanged();
+    partial void OndistanceChanging(System.Nullable<double> value);
+    partial void OndistanceChanged();
+    partial void OnsetsChanging(System.Nullable<int> value);
+    partial void OnsetsChanged();
+    partial void OnrepsChanging(System.Nullable<int> value);
+    partial void OnrepsChanged();
+    partial void OntimesChanging(string value);
+    partial void OntimesChanged();
+    partial void OncaloriesChanging(System.Nullable<double> value);
+    partial void OncaloriesChanged();
+    partial void OndatesChanging(System.DateTime value);
+    partial void OndatesChanged();
+    partial void OnpoundChanging(System.Nullable<int> value);
+    partial void OnpoundChanged();
+    #endregion
+	
+	public pb()
+	{
+		this._users = default(EntityRef<users>);
+		this._sport_type = default(EntityRef<sport_type>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pbnum", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int pbnum
+	{
+		get
+		{
+			return this._pbnum;
+		}
+		set
+		{
+			if ((this._pbnum != value))
+			{
+				this.OnpbnumChanging(value);
+				this.SendPropertyChanging();
+				this._pbnum = value;
+				this.SendPropertyChanged("pbnum");
+				this.OnpbnumChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
+	public int user_id
+	{
+		get
+		{
+			return this._user_id;
+		}
+		set
+		{
+			if ((this._user_id != value))
+			{
+				if (this._users.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onuser_idChanging(value);
+				this.SendPropertyChanging();
+				this._user_id = value;
+				this.SendPropertyChanged("user_id");
+				this.Onuser_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sport_id", DbType="Int NOT NULL")]
+	public int sport_id
+	{
+		get
+		{
+			return this._sport_id;
+		}
+		set
+		{
+			if ((this._sport_id != value))
+			{
+				if (this._sport_type.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onsport_idChanging(value);
+				this.SendPropertyChanging();
+				this._sport_id = value;
+				this.SendPropertyChanged("sport_id");
+				this.Onsport_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_distance", DbType="Float")]
+	public System.Nullable<double> distance
+	{
+		get
+		{
+			return this._distance;
+		}
+		set
+		{
+			if ((this._distance != value))
+			{
+				this.OndistanceChanging(value);
+				this.SendPropertyChanging();
+				this._distance = value;
+				this.SendPropertyChanged("distance");
+				this.OndistanceChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sets", DbType="Int")]
+	public System.Nullable<int> sets
+	{
+		get
+		{
+			return this._sets;
+		}
+		set
+		{
+			if ((this._sets != value))
+			{
+				this.OnsetsChanging(value);
+				this.SendPropertyChanging();
+				this._sets = value;
+				this.SendPropertyChanged("sets");
+				this.OnsetsChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reps", DbType="Int")]
+	public System.Nullable<int> reps
+	{
+		get
+		{
+			return this._reps;
+		}
+		set
+		{
+			if ((this._reps != value))
+			{
+				this.OnrepsChanging(value);
+				this.SendPropertyChanging();
+				this._reps = value;
+				this.SendPropertyChanged("reps");
+				this.OnrepsChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_times", DbType="NVarChar(50)")]
+	public string times
+	{
+		get
+		{
+			return this._times;
+		}
+		set
+		{
+			if ((this._times != value))
+			{
+				this.OntimesChanging(value);
+				this.SendPropertyChanging();
+				this._times = value;
+				this.SendPropertyChanged("times");
+				this.OntimesChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_calories", DbType="Float")]
+	public System.Nullable<double> calories
+	{
+		get
+		{
+			return this._calories;
+		}
+		set
+		{
+			if ((this._calories != value))
+			{
+				this.OncaloriesChanging(value);
+				this.SendPropertyChanging();
+				this._calories = value;
+				this.SendPropertyChanged("calories");
+				this.OncaloriesChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dates", DbType="DateTime NOT NULL")]
+	public System.DateTime dates
+	{
+		get
+		{
+			return this._dates;
+		}
+		set
+		{
+			if ((this._dates != value))
+			{
+				this.OndatesChanging(value);
+				this.SendPropertyChanging();
+				this._dates = value;
+				this.SendPropertyChanged("dates");
+				this.OndatesChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pound", DbType="Int")]
+	public System.Nullable<int> pound
+	{
+		get
+		{
+			return this._pound;
+		}
+		set
+		{
+			if ((this._pound != value))
+			{
+				this.OnpoundChanging(value);
+				this.SendPropertyChanging();
+				this._pound = value;
+				this.SendPropertyChanged("pound");
+				this.OnpoundChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_pb", Storage="_users", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+	public users users
+	{
+		get
+		{
+			return this._users.Entity;
+		}
+		set
+		{
+			users previousValue = this._users.Entity;
+			if (((previousValue != value) 
+						|| (this._users.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._users.Entity = null;
+					previousValue.pb.Remove(this);
+				}
+				this._users.Entity = value;
+				if ((value != null))
+				{
+					value.pb.Add(this);
+					this._user_id = value.user_id;
+				}
+				else
+				{
+					this._user_id = default(int);
+				}
+				this.SendPropertyChanged("users");
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="sport_type_pb", Storage="_sport_type", ThisKey="sport_id", OtherKey="sport_id", IsForeignKey=true)]
+	public sport_type sport_type
+	{
+		get
+		{
+			return this._sport_type.Entity;
+		}
+		set
+		{
+			sport_type previousValue = this._sport_type.Entity;
+			if (((previousValue != value) 
+						|| (this._sport_type.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._sport_type.Entity = null;
+					previousValue.pb.Remove(this);
+				}
+				this._sport_type.Entity = value;
+				if ((value != null))
+				{
+					value.pb.Add(this);
+					this._sport_id = value.sport_id;
+				}
+				else
+				{
+					this._sport_id = default(int);
+				}
+				this.SendPropertyChanged("sport_type");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
+public partial class users : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
 	private int _user_id;
 	
-	private string _u_photo;
-	
 	private string _u_name;
+	
+	private string _u_photo;
 	
 	private string _u_password;
 	
@@ -135,11 +484,13 @@ public partial class bjuser : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private System.Nullable<System.DateTime> _u_birth;
 	
-	private System.Nullable<bool> _u_gender;
+	private bool _u_sex;
 	
-	private EntitySet<personal_sport_menu> _personal_sport_menu;
+	private System.Nullable<int> _u_atk;
 	
-	private EntityRef<setting> _setting;
+	private System.Nullable<int> _u_win;
+	
+	private EntitySet<pb> _pb;
 	
 	private EntitySet<user_health> _user_health;
 	
@@ -149,24 +500,27 @@ public partial class bjuser : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnCreated();
     partial void Onuser_idChanging(int value);
     partial void Onuser_idChanged();
-    partial void Onu_photoChanging(string value);
-    partial void Onu_photoChanged();
     partial void Onu_nameChanging(string value);
     partial void Onu_nameChanged();
+    partial void Onu_photoChanging(string value);
+    partial void Onu_photoChanged();
     partial void Onu_passwordChanging(string value);
     partial void Onu_passwordChanged();
     partial void Onu_emailChanging(string value);
     partial void Onu_emailChanged();
     partial void Onu_birthChanging(System.Nullable<System.DateTime> value);
     partial void Onu_birthChanged();
-    partial void Onu_genderChanging(System.Nullable<bool> value);
-    partial void Onu_genderChanged();
+    partial void Onu_sexChanging(bool value);
+    partial void Onu_sexChanged();
+    partial void Onu_atkChanging(System.Nullable<int> value);
+    partial void Onu_atkChanged();
+    partial void Onu_winChanging(System.Nullable<int> value);
+    partial void Onu_winChanged();
     #endregion
 	
-	public bjuser()
+	public users()
 	{
-		this._personal_sport_menu = new EntitySet<personal_sport_menu>(new Action<personal_sport_menu>(this.attach_personal_sport_menu), new Action<personal_sport_menu>(this.detach_personal_sport_menu));
-		this._setting = default(EntityRef<setting>);
+		this._pb = new EntitySet<pb>(new Action<pb>(this.attach_pb), new Action<pb>(this.detach_pb));
 		this._user_health = new EntitySet<user_health>(new Action<user_health>(this.attach_user_health), new Action<user_health>(this.detach_user_health));
 		OnCreated();
 	}
@@ -191,6 +545,26 @@ public partial class bjuser : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string u_name
+	{
+		get
+		{
+			return this._u_name;
+		}
+		set
+		{
+			if ((this._u_name != value))
+			{
+				this.Onu_nameChanging(value);
+				this.SendPropertyChanging();
+				this._u_name = value;
+				this.SendPropertyChanged("u_name");
+				this.Onu_nameChanged();
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_photo", DbType="NVarChar(MAX)")]
 	public string u_photo
 	{
@@ -211,27 +585,7 @@ public partial class bjuser : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_name", DbType="NVarChar(50)")]
-	public string u_name
-	{
-		get
-		{
-			return this._u_name;
-		}
-		set
-		{
-			if ((this._u_name != value))
-			{
-				this.Onu_nameChanging(value);
-				this.SendPropertyChanging();
-				this._u_name = value;
-				this.SendPropertyChanged("u_name");
-				this.Onu_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_password", DbType="NVarChar(50)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_password", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 	public string u_password
 	{
 		get
@@ -251,7 +605,7 @@ public partial class bjuser : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_email", DbType="NVarChar(50)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_email", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 	public string u_email
 	{
 		get
@@ -291,69 +645,80 @@ public partial class bjuser : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_gender", DbType="Bit")]
-	public System.Nullable<bool> u_gender
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_sex", DbType="Bit NOT NULL")]
+	public bool u_sex
 	{
 		get
 		{
-			return this._u_gender;
+			return this._u_sex;
 		}
 		set
 		{
-			if ((this._u_gender != value))
+			if ((this._u_sex != value))
 			{
-				this.Onu_genderChanging(value);
+				this.Onu_sexChanging(value);
 				this.SendPropertyChanging();
-				this._u_gender = value;
-				this.SendPropertyChanged("u_gender");
-				this.Onu_genderChanged();
+				this._u_sex = value;
+				this.SendPropertyChanged("u_sex");
+				this.Onu_sexChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="bjuser_personal_sport_menu", Storage="_personal_sport_menu", ThisKey="user_id", OtherKey="user_id")]
-	public EntitySet<personal_sport_menu> personal_sport_menu
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_atk", DbType="Int")]
+	public System.Nullable<int> u_atk
 	{
 		get
 		{
-			return this._personal_sport_menu;
+			return this._u_atk;
 		}
 		set
 		{
-			this._personal_sport_menu.Assign(value);
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="bjuser_setting", Storage="_setting", ThisKey="user_id", OtherKey="user_id", IsUnique=true, IsForeignKey=false)]
-	public setting setting
-	{
-		get
-		{
-			return this._setting.Entity;
-		}
-		set
-		{
-			setting previousValue = this._setting.Entity;
-			if (((previousValue != value) 
-						|| (this._setting.HasLoadedOrAssignedValue == false)))
+			if ((this._u_atk != value))
 			{
+				this.Onu_atkChanging(value);
 				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._setting.Entity = null;
-					previousValue.bjuser = null;
-				}
-				this._setting.Entity = value;
-				if ((value != null))
-				{
-					value.bjuser = this;
-				}
-				this.SendPropertyChanged("setting");
+				this._u_atk = value;
+				this.SendPropertyChanged("u_atk");
+				this.Onu_atkChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="bjuser_user_health", Storage="_user_health", ThisKey="user_id", OtherKey="user_id")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_win", DbType="Int")]
+	public System.Nullable<int> u_win
+	{
+		get
+		{
+			return this._u_win;
+		}
+		set
+		{
+			if ((this._u_win != value))
+			{
+				this.Onu_winChanging(value);
+				this.SendPropertyChanging();
+				this._u_win = value;
+				this.SendPropertyChanged("u_win");
+				this.Onu_winChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_pb", Storage="_pb", ThisKey="user_id", OtherKey="user_id")]
+	public EntitySet<pb> pb
+	{
+		get
+		{
+			return this._pb;
+		}
+		set
+		{
+			this._pb.Assign(value);
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_user_health", Storage="_user_health", ThisKey="user_id", OtherKey="user_id")]
 	public EntitySet<user_health> user_health
 	{
 		get
@@ -386,550 +751,108 @@ public partial class bjuser : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	private void attach_personal_sport_menu(personal_sport_menu entity)
+	private void attach_pb(pb entity)
 	{
 		this.SendPropertyChanging();
-		entity.bjuser = this;
+		entity.users = this;
 	}
 	
-	private void detach_personal_sport_menu(personal_sport_menu entity)
+	private void detach_pb(pb entity)
 	{
 		this.SendPropertyChanging();
-		entity.bjuser = null;
+		entity.users = null;
 	}
 	
 	private void attach_user_health(user_health entity)
 	{
 		this.SendPropertyChanging();
-		entity.bjuser = this;
+		entity.users = this;
 	}
 	
 	private void detach_user_health(user_health entity)
 	{
 		this.SendPropertyChanging();
-		entity.bjuser = null;
+		entity.users = null;
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.personal_sport_menu")]
-public partial class personal_sport_menu : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_health")]
+public partial class user_health : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _p_menu_num;
-	
-	private System.Nullable<int> _user_id;
-	
-	private System.Nullable<System.DateTime> _spdate;
-	
-	private System.Nullable<int> _SportID;
-	
-	private System.Nullable<double> _distance;
-	
-	private System.Nullable<int> _reps;
-	
-	private System.Nullable<int> _sets;
-	
-	private System.Nullable<System.TimeSpan> _times;
-	
-	private System.Nullable<bool> _finish;
-	
-	private EntityRef<bjuser> _bjuser;
-	
-	private EntityRef<SportType> _SportType;
-	
-    #region 擴充性方法定義
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onp_menu_numChanging(int value);
-    partial void Onp_menu_numChanged();
-    partial void Onuser_idChanging(System.Nullable<int> value);
-    partial void Onuser_idChanged();
-    partial void OnspdateChanging(System.Nullable<System.DateTime> value);
-    partial void OnspdateChanged();
-    partial void OnSportIDChanging(System.Nullable<int> value);
-    partial void OnSportIDChanged();
-    partial void OndistanceChanging(System.Nullable<double> value);
-    partial void OndistanceChanged();
-    partial void OnrepsChanging(System.Nullable<int> value);
-    partial void OnrepsChanged();
-    partial void OnsetsChanging(System.Nullable<int> value);
-    partial void OnsetsChanged();
-    partial void OntimesChanging(System.Nullable<System.TimeSpan> value);
-    partial void OntimesChanged();
-    partial void OnfinishChanging(System.Nullable<bool> value);
-    partial void OnfinishChanged();
-    #endregion
-	
-	public personal_sport_menu()
-	{
-		this._bjuser = default(EntityRef<bjuser>);
-		this._SportType = default(EntityRef<SportType>);
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_p_menu_num", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int p_menu_num
-	{
-		get
-		{
-			return this._p_menu_num;
-		}
-		set
-		{
-			if ((this._p_menu_num != value))
-			{
-				this.Onp_menu_numChanging(value);
-				this.SendPropertyChanging();
-				this._p_menu_num = value;
-				this.SendPropertyChanged("p_menu_num");
-				this.Onp_menu_numChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int")]
-	public System.Nullable<int> user_id
-	{
-		get
-		{
-			return this._user_id;
-		}
-		set
-		{
-			if ((this._user_id != value))
-			{
-				if (this._bjuser.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onuser_idChanging(value);
-				this.SendPropertyChanging();
-				this._user_id = value;
-				this.SendPropertyChanged("user_id");
-				this.Onuser_idChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_spdate", DbType="Date")]
-	public System.Nullable<System.DateTime> spdate
-	{
-		get
-		{
-			return this._spdate;
-		}
-		set
-		{
-			if ((this._spdate != value))
-			{
-				this.OnspdateChanging(value);
-				this.SendPropertyChanging();
-				this._spdate = value;
-				this.SendPropertyChanged("spdate");
-				this.OnspdateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SportID", DbType="Int")]
-	public System.Nullable<int> SportID
-	{
-		get
-		{
-			return this._SportID;
-		}
-		set
-		{
-			if ((this._SportID != value))
-			{
-				if (this._SportType.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.OnSportIDChanging(value);
-				this.SendPropertyChanging();
-				this._SportID = value;
-				this.SendPropertyChanged("SportID");
-				this.OnSportIDChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_distance", DbType="Float")]
-	public System.Nullable<double> distance
-	{
-		get
-		{
-			return this._distance;
-		}
-		set
-		{
-			if ((this._distance != value))
-			{
-				this.OndistanceChanging(value);
-				this.SendPropertyChanging();
-				this._distance = value;
-				this.SendPropertyChanged("distance");
-				this.OndistanceChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reps", DbType="Int")]
-	public System.Nullable<int> reps
-	{
-		get
-		{
-			return this._reps;
-		}
-		set
-		{
-			if ((this._reps != value))
-			{
-				this.OnrepsChanging(value);
-				this.SendPropertyChanging();
-				this._reps = value;
-				this.SendPropertyChanged("reps");
-				this.OnrepsChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sets", DbType="Int")]
-	public System.Nullable<int> sets
-	{
-		get
-		{
-			return this._sets;
-		}
-		set
-		{
-			if ((this._sets != value))
-			{
-				this.OnsetsChanging(value);
-				this.SendPropertyChanging();
-				this._sets = value;
-				this.SendPropertyChanged("sets");
-				this.OnsetsChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_times", DbType="Time")]
-	public System.Nullable<System.TimeSpan> times
-	{
-		get
-		{
-			return this._times;
-		}
-		set
-		{
-			if ((this._times != value))
-			{
-				this.OntimesChanging(value);
-				this.SendPropertyChanging();
-				this._times = value;
-				this.SendPropertyChanged("times");
-				this.OntimesChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_finish", DbType="Bit")]
-	public System.Nullable<bool> finish
-	{
-		get
-		{
-			return this._finish;
-		}
-		set
-		{
-			if ((this._finish != value))
-			{
-				this.OnfinishChanging(value);
-				this.SendPropertyChanging();
-				this._finish = value;
-				this.SendPropertyChanged("finish");
-				this.OnfinishChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="bjuser_personal_sport_menu", Storage="_bjuser", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
-	public bjuser bjuser
-	{
-		get
-		{
-			return this._bjuser.Entity;
-		}
-		set
-		{
-			bjuser previousValue = this._bjuser.Entity;
-			if (((previousValue != value) 
-						|| (this._bjuser.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._bjuser.Entity = null;
-					previousValue.personal_sport_menu.Remove(this);
-				}
-				this._bjuser.Entity = value;
-				if ((value != null))
-				{
-					value.personal_sport_menu.Add(this);
-					this._user_id = value.user_id;
-				}
-				else
-				{
-					this._user_id = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("bjuser");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SportType_personal_sport_menu", Storage="_SportType", ThisKey="SportID", OtherKey="SportID", IsForeignKey=true)]
-	public SportType SportType
-	{
-		get
-		{
-			return this._SportType.Entity;
-		}
-		set
-		{
-			SportType previousValue = this._SportType.Entity;
-			if (((previousValue != value) 
-						|| (this._SportType.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._SportType.Entity = null;
-					previousValue.personal_sport_menu.Remove(this);
-				}
-				this._SportType.Entity = value;
-				if ((value != null))
-				{
-					value.personal_sport_menu.Add(this);
-					this._SportID = value.SportID;
-				}
-				else
-				{
-					this._SportID = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("SportType");
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SportType")]
-public partial class SportType : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _SportID;
-	
-	private System.Nullable<int> _TypeID;
-	
-	private string _SportName;
-	
-	private EntitySet<personal_sport_menu> _personal_sport_menu;
-	
-    #region 擴充性方法定義
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSportIDChanging(int value);
-    partial void OnSportIDChanged();
-    partial void OnTypeIDChanging(System.Nullable<int> value);
-    partial void OnTypeIDChanged();
-    partial void OnSportNameChanging(string value);
-    partial void OnSportNameChanged();
-    #endregion
-	
-	public SportType()
-	{
-		this._personal_sport_menu = new EntitySet<personal_sport_menu>(new Action<personal_sport_menu>(this.attach_personal_sport_menu), new Action<personal_sport_menu>(this.detach_personal_sport_menu));
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SportID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-	public int SportID
-	{
-		get
-		{
-			return this._SportID;
-		}
-		set
-		{
-			if ((this._SportID != value))
-			{
-				this.OnSportIDChanging(value);
-				this.SendPropertyChanging();
-				this._SportID = value;
-				this.SendPropertyChanged("SportID");
-				this.OnSportIDChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeID", DbType="Int")]
-	public System.Nullable<int> TypeID
-	{
-		get
-		{
-			return this._TypeID;
-		}
-		set
-		{
-			if ((this._TypeID != value))
-			{
-				this.OnTypeIDChanging(value);
-				this.SendPropertyChanging();
-				this._TypeID = value;
-				this.SendPropertyChanged("TypeID");
-				this.OnTypeIDChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SportName", DbType="NVarChar(50)")]
-	public string SportName
-	{
-		get
-		{
-			return this._SportName;
-		}
-		set
-		{
-			if ((this._SportName != value))
-			{
-				this.OnSportNameChanging(value);
-				this.SendPropertyChanging();
-				this._SportName = value;
-				this.SendPropertyChanged("SportName");
-				this.OnSportNameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SportType_personal_sport_menu", Storage="_personal_sport_menu", ThisKey="SportID", OtherKey="SportID")]
-	public EntitySet<personal_sport_menu> personal_sport_menu
-	{
-		get
-		{
-			return this._personal_sport_menu;
-		}
-		set
-		{
-			this._personal_sport_menu.Assign(value);
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-	
-	private void attach_personal_sport_menu(personal_sport_menu entity)
-	{
-		this.SendPropertyChanging();
-		entity.SportType = this;
-	}
-	
-	private void detach_personal_sport_menu(personal_sport_menu entity)
-	{
-		this.SendPropertyChanging();
-		entity.SportType = null;
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.setting")]
-public partial class setting : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	private int _user_health_num;
 	
 	private int _user_id;
 	
-	private System.Nullable<bool> _drink;
+	private double _height;
 	
-	private System.Nullable<bool> _fight;
+	private System.Nullable<decimal> _weight;
 	
-	private System.Nullable<bool> _inspire;
+	private System.Nullable<System.DateTime> _dates;
 	
-	private System.Nullable<decimal> _drink_liter;
+	private System.Nullable<decimal> _BMI;
 	
 	private System.Nullable<decimal> _BMR;
 	
-	private EntityRef<bjuser> _bjuser;
+	private System.Nullable<decimal> _drink_liter;
+	
+	private System.Nullable<int> _age;
+	
+	private EntityRef<users> _users;
 	
     #region 擴充性方法定義
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void Onuser_health_numChanging(int value);
+    partial void Onuser_health_numChanged();
     partial void Onuser_idChanging(int value);
     partial void Onuser_idChanged();
-    partial void OndrinkChanging(System.Nullable<bool> value);
-    partial void OndrinkChanged();
-    partial void OnfightChanging(System.Nullable<bool> value);
-    partial void OnfightChanged();
-    partial void OninspireChanging(System.Nullable<bool> value);
-    partial void OninspireChanged();
-    partial void Ondrink_literChanging(System.Nullable<decimal> value);
-    partial void Ondrink_literChanged();
+    partial void OnheightChanging(double value);
+    partial void OnheightChanged();
+    partial void OnweightChanging(System.Nullable<decimal> value);
+    partial void OnweightChanged();
+    partial void OndatesChanging(System.Nullable<System.DateTime> value);
+    partial void OndatesChanged();
+    partial void OnBMIChanging(System.Nullable<decimal> value);
+    partial void OnBMIChanged();
     partial void OnBMRChanging(System.Nullable<decimal> value);
     partial void OnBMRChanged();
+    partial void Ondrink_literChanging(System.Nullable<decimal> value);
+    partial void Ondrink_literChanged();
+    partial void OnageChanging(System.Nullable<int> value);
+    partial void OnageChanged();
     #endregion
 	
-	public setting()
+	public user_health()
 	{
-		this._bjuser = default(EntityRef<bjuser>);
+		this._users = default(EntityRef<users>);
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_health_num", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int user_health_num
+	{
+		get
+		{
+			return this._user_health_num;
+		}
+		set
+		{
+			if ((this._user_health_num != value))
+			{
+				this.Onuser_health_numChanging(value);
+				this.SendPropertyChanging();
+				this._user_health_num = value;
+				this.SendPropertyChanged("user_health_num");
+				this.Onuser_health_numChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
 	public int user_id
 	{
 		get
@@ -940,7 +863,7 @@ public partial class setting : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			if ((this._user_id != value))
 			{
-				if (this._bjuser.HasLoadedOrAssignedValue)
+				if (this._users.HasLoadedOrAssignedValue)
 				{
 					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 				}
@@ -953,82 +876,82 @@ public partial class setting : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_drink", DbType="Bit")]
-	public System.Nullable<bool> drink
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_height", DbType="Float NOT NULL")]
+	public double height
 	{
 		get
 		{
-			return this._drink;
+			return this._height;
 		}
 		set
 		{
-			if ((this._drink != value))
+			if ((this._height != value))
 			{
-				this.OndrinkChanging(value);
+				this.OnheightChanging(value);
 				this.SendPropertyChanging();
-				this._drink = value;
-				this.SendPropertyChanged("drink");
-				this.OndrinkChanged();
+				this._height = value;
+				this.SendPropertyChanged("height");
+				this.OnheightChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fight", DbType="Bit")]
-	public System.Nullable<bool> fight
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_weight", DbType="Decimal(18,1)")]
+	public System.Nullable<decimal> weight
 	{
 		get
 		{
-			return this._fight;
+			return this._weight;
 		}
 		set
 		{
-			if ((this._fight != value))
+			if ((this._weight != value))
 			{
-				this.OnfightChanging(value);
+				this.OnweightChanging(value);
 				this.SendPropertyChanging();
-				this._fight = value;
-				this.SendPropertyChanged("fight");
-				this.OnfightChanged();
+				this._weight = value;
+				this.SendPropertyChanged("weight");
+				this.OnweightChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_inspire", DbType="Bit")]
-	public System.Nullable<bool> inspire
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dates", DbType="DateTime")]
+	public System.Nullable<System.DateTime> dates
 	{
 		get
 		{
-			return this._inspire;
+			return this._dates;
 		}
 		set
 		{
-			if ((this._inspire != value))
+			if ((this._dates != value))
 			{
-				this.OninspireChanging(value);
+				this.OndatesChanging(value);
 				this.SendPropertyChanging();
-				this._inspire = value;
-				this.SendPropertyChanged("inspire");
-				this.OninspireChanged();
+				this._dates = value;
+				this.SendPropertyChanged("dates");
+				this.OndatesChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_drink_liter", DbType="Decimal(18,3)")]
-	public System.Nullable<decimal> drink_liter
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BMI", DbType="Decimal(18,3)")]
+	public System.Nullable<decimal> BMI
 	{
 		get
 		{
-			return this._drink_liter;
+			return this._BMI;
 		}
 		set
 		{
-			if ((this._drink_liter != value))
+			if ((this._BMI != value))
 			{
-				this.Ondrink_literChanging(value);
+				this.OnBMIChanging(value);
 				this.SendPropertyChanging();
-				this._drink_liter = value;
-				this.SendPropertyChanged("drink_liter");
-				this.Ondrink_literChanged();
+				this._BMI = value;
+				this.SendPropertyChanged("BMI");
+				this.OnBMIChanged();
 			}
 		}
 	}
@@ -1053,36 +976,76 @@ public partial class setting : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="bjuser_setting", Storage="_bjuser", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
-	public bjuser bjuser
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_drink_liter", DbType="Decimal(18,3)")]
+	public System.Nullable<decimal> drink_liter
 	{
 		get
 		{
-			return this._bjuser.Entity;
+			return this._drink_liter;
 		}
 		set
 		{
-			bjuser previousValue = this._bjuser.Entity;
+			if ((this._drink_liter != value))
+			{
+				this.Ondrink_literChanging(value);
+				this.SendPropertyChanging();
+				this._drink_liter = value;
+				this.SendPropertyChanged("drink_liter");
+				this.Ondrink_literChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_age", DbType="Int")]
+	public System.Nullable<int> age
+	{
+		get
+		{
+			return this._age;
+		}
+		set
+		{
+			if ((this._age != value))
+			{
+				this.OnageChanging(value);
+				this.SendPropertyChanging();
+				this._age = value;
+				this.SendPropertyChanged("age");
+				this.OnageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_user_health", Storage="_users", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+	public users users
+	{
+		get
+		{
+			return this._users.Entity;
+		}
+		set
+		{
+			users previousValue = this._users.Entity;
 			if (((previousValue != value) 
-						|| (this._bjuser.HasLoadedOrAssignedValue == false)))
+						|| (this._users.HasLoadedOrAssignedValue == false)))
 			{
 				this.SendPropertyChanging();
 				if ((previousValue != null))
 				{
-					this._bjuser.Entity = null;
-					previousValue.setting = null;
+					this._users.Entity = null;
+					previousValue.user_health.Remove(this);
 				}
-				this._bjuser.Entity = value;
+				this._users.Entity = value;
 				if ((value != null))
 				{
-					value.setting = this;
+					value.user_health.Add(this);
 					this._user_id = value.user_id;
 				}
 				else
 				{
 					this._user_id = default(int);
 				}
-				this.SendPropertyChanged("bjuser");
+				this.SendPropertyChanged("users");
 			}
 		}
 	}
@@ -1108,229 +1071,132 @@ public partial class setting : INotifyPropertyChanging, INotifyPropertyChanged
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_health")]
-public partial class user_health : INotifyPropertyChanging, INotifyPropertyChanged
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.sport_type")]
+public partial class sport_type : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
-	private int _health_num;
+	private int _type_id;
 	
-	private System.Nullable<int> _user_id;
+	private int _sport_id;
 	
-	private System.Nullable<bool> _u_gender;
+	private string _sport_name;
 	
-	private System.Nullable<int> _age;
+	private string _sport_photo;
 	
-	private System.Nullable<int> _height;
-	
-	private System.Nullable<int> _weight;
-	
-	private System.Nullable<System.DateTime> _insert_date;
-	
-	private EntityRef<bjuser> _bjuser;
+	private EntitySet<pb> _pb;
 	
     #region 擴充性方法定義
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onhealth_numChanging(int value);
-    partial void Onhealth_numChanged();
-    partial void Onuser_idChanging(System.Nullable<int> value);
-    partial void Onuser_idChanged();
-    partial void Onu_genderChanging(System.Nullable<bool> value);
-    partial void Onu_genderChanged();
-    partial void OnageChanging(System.Nullable<int> value);
-    partial void OnageChanged();
-    partial void OnheightChanging(System.Nullable<int> value);
-    partial void OnheightChanged();
-    partial void OnweightChanging(System.Nullable<int> value);
-    partial void OnweightChanged();
-    partial void Oninsert_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Oninsert_dateChanged();
+    partial void Ontype_idChanging(int value);
+    partial void Ontype_idChanged();
+    partial void Onsport_idChanging(int value);
+    partial void Onsport_idChanged();
+    partial void Onsport_nameChanging(string value);
+    partial void Onsport_nameChanged();
+    partial void Onsport_photoChanging(string value);
+    partial void Onsport_photoChanged();
     #endregion
 	
-	public user_health()
+	public sport_type()
 	{
-		this._bjuser = default(EntityRef<bjuser>);
+		this._pb = new EntitySet<pb>(new Action<pb>(this.attach_pb), new Action<pb>(this.detach_pb));
 		OnCreated();
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_health_num", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int health_num
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_type_id", DbType="Int NOT NULL")]
+	public int type_id
 	{
 		get
 		{
-			return this._health_num;
+			return this._type_id;
 		}
 		set
 		{
-			if ((this._health_num != value))
+			if ((this._type_id != value))
 			{
-				this.Onhealth_numChanging(value);
+				this.Ontype_idChanging(value);
 				this.SendPropertyChanging();
-				this._health_num = value;
-				this.SendPropertyChanged("health_num");
-				this.Onhealth_numChanged();
+				this._type_id = value;
+				this.SendPropertyChanged("type_id");
+				this.Ontype_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int")]
-	public System.Nullable<int> user_id
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sport_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	public int sport_id
 	{
 		get
 		{
-			return this._user_id;
+			return this._sport_id;
 		}
 		set
 		{
-			if ((this._user_id != value))
+			if ((this._sport_id != value))
 			{
-				if (this._bjuser.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.Onuser_idChanging(value);
+				this.Onsport_idChanging(value);
 				this.SendPropertyChanging();
-				this._user_id = value;
-				this.SendPropertyChanged("user_id");
-				this.Onuser_idChanged();
+				this._sport_id = value;
+				this.SendPropertyChanged("sport_id");
+				this.Onsport_idChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_u_gender", DbType="Bit")]
-	public System.Nullable<bool> u_gender
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sport_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string sport_name
 	{
 		get
 		{
-			return this._u_gender;
+			return this._sport_name;
 		}
 		set
 		{
-			if ((this._u_gender != value))
+			if ((this._sport_name != value))
 			{
-				this.Onu_genderChanging(value);
+				this.Onsport_nameChanging(value);
 				this.SendPropertyChanging();
-				this._u_gender = value;
-				this.SendPropertyChanged("u_gender");
-				this.Onu_genderChanged();
+				this._sport_name = value;
+				this.SendPropertyChanged("sport_name");
+				this.Onsport_nameChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_age", DbType="Int")]
-	public System.Nullable<int> age
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sport_photo", DbType="NVarChar(50)")]
+	public string sport_photo
 	{
 		get
 		{
-			return this._age;
+			return this._sport_photo;
 		}
 		set
 		{
-			if ((this._age != value))
+			if ((this._sport_photo != value))
 			{
-				this.OnageChanging(value);
+				this.Onsport_photoChanging(value);
 				this.SendPropertyChanging();
-				this._age = value;
-				this.SendPropertyChanged("age");
-				this.OnageChanged();
+				this._sport_photo = value;
+				this.SendPropertyChanged("sport_photo");
+				this.Onsport_photoChanged();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_height", DbType="Int")]
-	public System.Nullable<int> height
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="sport_type_pb", Storage="_pb", ThisKey="sport_id", OtherKey="sport_id")]
+	public EntitySet<pb> pb
 	{
 		get
 		{
-			return this._height;
+			return this._pb;
 		}
 		set
 		{
-			if ((this._height != value))
-			{
-				this.OnheightChanging(value);
-				this.SendPropertyChanging();
-				this._height = value;
-				this.SendPropertyChanged("height");
-				this.OnheightChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_weight", DbType="Int")]
-	public System.Nullable<int> weight
-	{
-		get
-		{
-			return this._weight;
-		}
-		set
-		{
-			if ((this._weight != value))
-			{
-				this.OnweightChanging(value);
-				this.SendPropertyChanging();
-				this._weight = value;
-				this.SendPropertyChanged("weight");
-				this.OnweightChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_insert_date", DbType="Date")]
-	public System.Nullable<System.DateTime> insert_date
-	{
-		get
-		{
-			return this._insert_date;
-		}
-		set
-		{
-			if ((this._insert_date != value))
-			{
-				this.Oninsert_dateChanging(value);
-				this.SendPropertyChanging();
-				this._insert_date = value;
-				this.SendPropertyChanged("insert_date");
-				this.Oninsert_dateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="bjuser_user_health", Storage="_bjuser", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
-	public bjuser bjuser
-	{
-		get
-		{
-			return this._bjuser.Entity;
-		}
-		set
-		{
-			bjuser previousValue = this._bjuser.Entity;
-			if (((previousValue != value) 
-						|| (this._bjuser.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._bjuser.Entity = null;
-					previousValue.user_health.Remove(this);
-				}
-				this._bjuser.Entity = value;
-				if ((value != null))
-				{
-					value.user_health.Add(this);
-					this._user_id = value.user_id;
-				}
-				else
-				{
-					this._user_id = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("bjuser");
-			}
+			this._pb.Assign(value);
 		}
 	}
 	
@@ -1352,6 +1218,18 @@ public partial class user_health : INotifyPropertyChanging, INotifyPropertyChang
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+	
+	private void attach_pb(pb entity)
+	{
+		this.SendPropertyChanging();
+		entity.sport_type = this;
+	}
+	
+	private void detach_pb(pb entity)
+	{
+		this.SendPropertyChanging();
+		entity.sport_type = null;
 	}
 }
 #pragma warning restore 1591
